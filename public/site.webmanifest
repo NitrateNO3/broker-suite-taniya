@@ -1,0 +1,10 @@
+{
+  "name": "BrokerSuite",
+  "short_name": "BrokerSuite",
+  "description": "Real Estate CRM & Property Management",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4F46E5",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

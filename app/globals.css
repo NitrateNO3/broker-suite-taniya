@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-white font-sans text-ink-700 antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Consistent, visible focus for anything not styled explicitly. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2;
+  }
+
+  ::selection {
+    @apply bg-brand-100 text-brand-900;
+  }
+}
+
+@layer components {
+  /* Long-form legal copy — one place, so every policy page matches. */
+  .legal-prose {
+    @apply text-[0.9375rem] leading-relaxed text-ink-600;
+  }
+  .legal-prose h2 {
+    @apply mb-3 mt-10 text-lg font-bold text-ink-950 sm:text-xl;
+  }
+  .legal-prose h3 {
+    @apply mb-2 mt-7 text-base font-semibold text-ink-950;
+  }
+  .legal-prose p {
+    @apply mb-4 max-w-prose;
+  }
+  .legal-prose ul {
+    @apply mb-4 max-w-prose list-disc space-y-2 pl-5 marker:text-ink-300;
+  }
+  .legal-prose a {
+    @apply rounded font-medium text-brand-600 underline underline-offset-4 hover:text-brand-700;
+  }
+  .legal-prose strong {
+    @apply font-semibold text-ink-800;
+  }
+}
