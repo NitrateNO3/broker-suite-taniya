@@ -9,7 +9,7 @@ import { contact, site } from '@/config/site';
 export const metadata: Metadata = pageMetadata({
   title: 'Contact & Request a Demo',
   description:
-    'Talk to the BrokerSuite team. Request a demo of the real estate CRM, ask about plans, or get help getting started.',
+    'Talk to the BrokrSuite team. Request a demo of the real estate CRM, ask about plans, or get help getting started.',
   path: '/contact/',
 });
 
@@ -19,7 +19,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Request a demo"
-        body="Tell us about your business and we will show you how BrokerSuite fits the way your team already works."
+        body="Tell us about your business and we will show you how BrokrSuite fits the way your team already works."
       />
 
       <Section compactTop>

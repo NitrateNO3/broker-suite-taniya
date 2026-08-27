@@ -36,12 +36,12 @@ export function AppShowcase() {
                   its column. One device on mobile, two from tablet up. */}
               <div className="flex items-end justify-center gap-4">
                 <div className="w-full max-w-[16rem] shrink-0 sm:w-64 sm:max-w-none sm:-translate-y-8">
-                  <PhoneFrame className="w-full" label="BrokerSuite app — properties list with search, category filters and status labels">
+                  <PhoneFrame className="w-full" label="BrokrSuite app — properties list with search, category filters and status labels">
                     <AppScreen variant="properties" />
                   </PhoneFrame>
                 </div>
                 <div className="hidden w-64 shrink-0 sm:block">
-                  <PhoneFrame className="w-full" label="BrokerSuite app — lead management showing status, source and assigned agent">
+                  <PhoneFrame className="w-full" label="BrokrSuite app — lead management showing status, source and assigned agent">
                     <AppScreen variant="leads" />
                   </PhoneFrame>
                 </div>

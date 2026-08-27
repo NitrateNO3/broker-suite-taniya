@@ -114,7 +114,7 @@ export function Hero() {
               </div>
 
               <div className="shrink-0 motion-safe:animate-fade-up" style={{ animationDelay: '200ms' }}>
-                <PhoneFrame label="BrokerSuite mobile app showing the business dashboard with total properties, active leads, closed deals, follow-ups and the sales pipeline">
+                <PhoneFrame label="BrokrSuite mobile app showing the business dashboard with total properties, active leads, closed deals, follow-ups and the sales pipeline">
                   <AppScreen variant="dashboard" />
                 </PhoneFrame>
               </div>

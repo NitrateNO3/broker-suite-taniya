@@ -17,7 +17,7 @@ export function Problem() {
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink-500 sm:text-lg">
               Most brokers aren&apos;t short on deals — they&apos;re short on a single place to keep track of
-              them. BrokerSuite brings your properties, leads, clients and follow-ups into one system your
+              them. BrokrSuite brings your properties, leads, clients and follow-ups into one system your
               whole team works from.
             </p>
             <Button href="/features/" className="mt-8 h-12 text-left sm:whitespace-nowrap">

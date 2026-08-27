@@ -10,7 +10,7 @@ import { features } from '@/config/site';
 export const metadata: Metadata = pageMetadata({
   title: 'Features',
   description:
-    'Property management, lead management, client records, follow-up reminders, team management and business analytics — every BrokerSuite feature in detail.',
+    'Property management, lead management, client records, follow-up reminders, team management and business analytics — every BrokrSuite feature in detail.',
   path: '/features/',
 });
 
@@ -19,7 +19,7 @@ export default function FeaturesPage() {
     <>
       <PageHeader
         eyebrow="Features"
-        title="Everything BrokerSuite does"
+        title="Everything BrokrSuite does"
         body="Six modules that cover the full lifecycle of a real estate deal — from the moment a property is listed to the moment it closes."
       />
 
@@ -44,7 +44,7 @@ export default function FeaturesPage() {
         </Container>
       </div>
 
-      <h2 className="sr-only">All BrokerSuite features</h2>
+      <h2 className="sr-only">All BrokrSuite features</h2>
       <FeatureShowcase showHeading={false} compactTop />
       <CTA />
     </>

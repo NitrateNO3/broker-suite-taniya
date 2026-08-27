@@ -8,7 +8,7 @@ import { Container, Section, SectionHeading } from '@/components/ui/Section';
 export const metadata: Metadata = pageMetadata({
   title: 'Pricing',
   description:
-    'BrokerSuite pricing plans for individual brokers, growing real estate businesses and agencies. Contact us for current plans.',
+    'BrokrSuite pricing plans for individual brokers, growing real estate businesses and agencies. Contact us for current plans.',
   path: '/pricing/',
 });
 
@@ -22,7 +22,7 @@ const pricingFaqs = [
     a: 'Yes. The Starter plan is built for individual brokers working on their own.',
   },
   {
-    q: 'What happens to my data if I stop using BrokerSuite?',
+    q: 'What happens to my data if I stop using BrokrSuite?',
     a: 'Your data stays yours. Contact us before closing your account and we will provide an export of your properties, leads and clients.',
   },
   {
@@ -37,7 +37,7 @@ export default function PricingPage() {
       <PageHeader
         eyebrow="Pricing"
         title="Simple plans for every size of real estate business"
-        body="Start on your own, or roll BrokerSuite out across a full agency. Pricing is being finalized — get in touch and we will walk you through the current plans."
+        body="Start on your own, or roll BrokrSuite out across a full agency. Pricing is being finalized — get in touch and we will walk you through the current plans."
       />
 
       <Pricing tone="default" compactTop />

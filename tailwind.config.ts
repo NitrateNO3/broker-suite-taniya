@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 /**
- * Design tokens derived from the BrokerSuite logo:
+ * Design tokens derived from the BrokrSuite logo:
  *  - brand.600 (#4F46E5) — the violet logo tile
  *  - brand.400 (#818CF8) — the "Suite" wordmark periwinkle
  *  - ink.950   (#0F1117) — the logo's dark ground

@@ -16,7 +16,7 @@ export function CTA() {
               Ready to simplify your real estate business?
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink-300 sm:text-lg">
-              Bring your properties, leads, clients and team together with BrokerSuite.
+              Bring your properties, leads, clients and team together with BrokrSuite.
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <Button href="/contact/" size="lg" variant="inverse" data-analytics="get-started-click">

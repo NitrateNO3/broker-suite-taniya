@@ -9,7 +9,7 @@ type LogoProps = {
 };
 
 /**
- * The BrokerSuite lockup: violet tile mark + two-tone wordmark.
+ * The BrokrSuite lockup: violet tile mark + two-tone wordmark.
  * Only the wordmark's first half swaps colour between the light and dark
  * lockups — the mark and the "Suite" accent stay exactly as supplied.
  */
@@ -22,7 +22,7 @@ export function Logo({ variant = 'dark', withTagline = false, className = '' }: 
       <LogoMark className="h-9 w-9 shrink-0" />
       <span className="flex flex-col justify-center leading-none">
         <span className={`text-[1.0625rem] font-bold tracking-[-0.02em] ${wordColor}`}>
-          Broker<span className="text-brand-500">Suite</span>
+          Brokr<span className="text-brand-500">Suite</span>
         </span>
         {withTagline && (
           <span className={`mt-1 text-[0.5625rem] font-medium uppercase tracking-[0.18em] ${taglineColor}`}>

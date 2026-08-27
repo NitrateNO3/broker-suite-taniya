@@ -8,19 +8,19 @@
  */
 
 export const site = {
-  name: 'BrokerSuite',
+  name: 'BrokrSuite',
   tagline: 'Real Estate CRM',
   description:
-    'Manage properties, leads, clients and your real estate business with BrokerSuite — a modern CRM platform built for real estate professionals.',
+    'Manage properties, leads, clients and your real estate business with BrokrSuite — a modern CRM platform built for real estate professionals.',
   shortDescription: 'A smarter way to manage your real estate business.',
   // Update to the production domain before deploying — used for canonical URLs,
   // Open Graph tags and sitemap.xml.
-  url: 'https://brokersuite.com',
+  url: 'https://brokrsuite.com',
   locale: 'en_IN',
 } as const;
 
 export const contact: { email: string; phone: string; address: string } = {
-  email: 'hello@brokersuite.com',
+  email: 'hello@brokrsuite.com',
   phone: '',           // e.g. '+91 98765 43210' — hidden while empty
   address: '',         // e.g. 'Sector 62, Noida, India' — hidden while empty
 };
@@ -338,16 +338,16 @@ export const testimonials = {
 
 export const faqs = [
   {
-    q: 'What is BrokerSuite?',
-    a: 'BrokerSuite is a real estate CRM and management platform designed to help brokers and agencies manage properties, leads, clients and sales workflows.',
+    q: 'What is BrokrSuite?',
+    a: 'BrokrSuite is a real estate CRM and management platform designed to help brokers and agencies manage properties, leads, clients and sales workflows.',
   },
   {
-    q: 'Who can use BrokerSuite?',
+    q: 'Who can use BrokrSuite?',
     a: 'Individual brokers, agents, real estate agencies, property consultants and real estate sales teams.',
   },
   {
-    q: 'Is BrokerSuite available on mobile?',
-    a: 'Yes. BrokerSuite is designed for mobile and will be available through the Google Play Store and the Apple App Store.',
+    q: 'Is BrokrSuite available on mobile?',
+    a: 'Yes. BrokrSuite is designed for mobile and will be available through the Google Play Store and the Apple App Store.',
   },
   {
     q: 'Can I manage multiple properties?',
@@ -367,7 +367,7 @@ export const faqs = [
   },
   {
     q: 'How can I get started?',
-    a: 'Download the app once it is published on your store, or contact the BrokerSuite team and we will walk you through the platform.',
+    a: 'Download the app once it is published on your store, or contact the BrokrSuite team and we will walk you through the platform.',
   },
 ];
 

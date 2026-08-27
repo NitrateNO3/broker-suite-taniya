@@ -1,6 +1,6 @@
-# BrokerSuite — Website
+# BrokrSuite — Website
 
-Marketing site and official web presence for the BrokerSuite real estate CRM,
+Marketing site and official web presence for the BrokrSuite real estate CRM,
 built against the BrokrSuite Website PRD.
 
 **Stack:** Next.js 15 (App Router) · TypeScript · Tailwind CSS · static export.
@@ -25,7 +25,7 @@ forbids shipping unverified content. Each is a one-line change.
 
 | What | Where | Currently |
 |---|---|---|
-| Production domain | `config/site.ts` → `site.url` | `https://brokersuite.com` — drives canonical URLs, OG tags and `sitemap.xml` |
+| Production domain | `config/site.ts` → `site.url` | `https://brokrsuite.com` — drives canonical URLs, OG tags and `sitemap.xml` |
 | App Store / Play links | `config/site.ts` → `stores` | `null` → badges render a non-clickable "Coming soon" chip |
 | Pricing | `config/site.ts` → `pricing` | `enabled: false` → plans show "Pricing on request" instead of numbers |
 | Statistics | `config/site.ts` → `stats` | `enabled: false` → the section does not render at all |
@@ -103,8 +103,9 @@ lockups — the mark itself is never recoloured or distorted.
 
 ## Notes on PRD interpretation
 
-- **"BrokrSuite" vs "BrokerSuite"** — the PRD text and the supplied logo
-  disagree. The site uses **BrokerSuite**, matching the logo.
+- **Brand spelling** — the PRD text and the supplied logo disagreed
+  ("BrokrSuite" vs "BrokerSuite"). The site uses **BrokrSuite**, matching the
+  PRD; the logo wordmark in `components/Logo.tsx` was updated to match.
 - **Nav has 7 items, PRD lists 6 pages** — Solutions, How It Works and FAQ are
   described as homepage *sections*, so they are anchor links rather than three
   thin pages. Features, Pricing and Contact are real pages.

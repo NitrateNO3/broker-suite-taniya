@@ -89,7 +89,7 @@ export function ContactForm() {
       const response = await fetch(contactEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...values, source: 'brokersuite.com/contact' }),
+        body: JSON.stringify({ ...values, source: 'brokrsuite.com/contact' }),
       });
 
       if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
@@ -113,7 +113,7 @@ export function ContactForm() {
         </span>
         <h3 className="mt-5 text-lg font-semibold text-ink-950">Thanks — we&apos;ve got your request.</h3>
         <p className="mx-auto mt-2 max-w-sm text-[0.9375rem] leading-relaxed text-ink-600">
-          A member of the BrokerSuite team will get back to you shortly. If it&apos;s urgent, email us at{' '}
+          A member of the BrokrSuite team will get back to you shortly. If it&apos;s urgent, email us at{' '}
           <a href={`mailto:${contact.email}`} className="font-medium text-brand-600 underline underline-offset-4">
             {contact.email}
           </a>

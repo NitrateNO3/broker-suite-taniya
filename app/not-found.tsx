@@ -7,7 +7,7 @@ export default function NotFound() {
       <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-600">404</p>
       <h1 className="mt-4 text-display-md font-bold text-ink-950">This page doesn&apos;t exist</h1>
       <p className="mt-4 max-w-md text-base leading-relaxed text-ink-500">
-        The page you were looking for may have moved. Head back to the homepage, or browse what BrokerSuite
+        The page you were looking for may have moved. Head back to the homepage, or browse what BrokrSuite
         can do.
       </p>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">

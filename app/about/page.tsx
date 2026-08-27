@@ -18,7 +18,7 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About"
         title="A CRM built for how brokers actually work"
-        body="Most real estate teams run on a mix of spreadsheets, chat threads and memory. BrokerSuite exists to replace that with one system built specifically for property businesses."
+        body="Most real estate teams run on a mix of spreadsheets, chat threads and memory. BrokrSuite exists to replace that with one system built specifically for property businesses."
       />
 
       <Section compactTop>
@@ -26,9 +26,9 @@ export default function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
               <div className="legal-prose">
-                <h2>What BrokerSuite is</h2>
+                <h2>What BrokrSuite is</h2>
                 <p>
-                  BrokerSuite is a real estate CRM and property management platform. It brings property
+                  BrokrSuite is a real estate CRM and property management platform. It brings property
                   inventory, leads, client records, follow-ups, team assignments and business analytics into
                   a single mobile-first application.
                 </p>
@@ -41,7 +41,7 @@ export default function AboutPage() {
                   are built to generate enquiries — not to help you manage them once they arrive.
                 </p>
                 <p>
-                  BrokerSuite sits in that gap: the operational software a broker or agency runs its day on.
+                  BrokrSuite sits in that gap: the operational software a broker or agency runs its day on.
                 </p>
 
                 <h2>Who it&apos;s for</h2>
@@ -55,7 +55,7 @@ export default function AboutPage() {
 
                 <h2>Talk to us</h2>
                 <p>
-                  We work closely with the brokers and agencies using BrokerSuite, and product decisions come
+                  We work closely with the brokers and agencies using BrokrSuite, and product decisions come
                   directly from that. If there is something your business needs, email us at{' '}
                   <a href={`mailto:${contact.email}`}>{contact.email}</a>.
                 </p>

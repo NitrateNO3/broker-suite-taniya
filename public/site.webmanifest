@@ -1,6 +1,6 @@
 {
-  "name": "BrokerSuite",
-  "short_name": "BrokerSuite",
+  "name": "BrokrSuite",
+  "short_name": "BrokrSuite",
   "description": "Real Estate CRM & Property Management",
   "start_url": "/",
   "display": "standalone",

@@ -51,7 +51,7 @@ function FeatureRow({ feature, flip }: { feature: Feature; flip: boolean }) {
             />
             <PhoneFrame
               className="relative"
-              label={`BrokerSuite app — ${feature.title} screen`}
+              label={`BrokrSuite app — ${feature.title} screen`}
             >
               <AppScreen variant={feature.visual} />
             </PhoneFrame>

@@ -1,7 +1,7 @@
 import { LogoMark } from '@/components/Logo';
 
 /**
- * Illustrative renderings of the BrokerSuite app UI, used until real product
+ * Illustrative renderings of the BrokrSuite app UI, used until real product
  * screenshots are available. Everything here is layout, not live data — swap
  * these for exported screenshots by replacing the component body.
  */
