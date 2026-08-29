@@ -71,6 +71,13 @@ const paths: Record<IconName, React.ReactNode> = {
     </>
   ),
   sparkle: <path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4L12 3z" />,
+  mail: (
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="M3.5 6.5l8.5 6 8.5-6" />
+    </>
+  ),
+  message: <path d="M21 12a8 8 0 0 1-8 8H4l2.1-2.9A8 8 0 1 1 21 12z" />,
 };
 
 export function Icon({

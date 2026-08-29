@@ -3,9 +3,7 @@ import { pageMetadata } from '@/lib/seo';
 import { Hero } from '@/components/sections/Hero';
 import { ValueProps } from '@/components/sections/ValueProps';
 import { Problem } from '@/components/sections/Problem';
-import { FeatureShowcase } from '@/components/sections/FeatureShowcase';
 import { Solutions } from '@/components/sections/Solutions';
-import { HowItWorks } from '@/components/sections/HowItWorks';
 import { AppShowcase } from '@/components/sections/AppShowcase';
 import { Stats } from '@/components/sections/Stats';
 import { Testimonials } from '@/components/sections/Testimonials';
@@ -38,10 +36,7 @@ export default function HomePage() {
       <ValueProps />
       <Stats />
       <Problem />
-      {/* Three features on the homepage; the full set lives on /features. */}
-      <FeatureShowcase limit={3} />
       <Solutions />
-      <HowItWorks />
       <AppShowcase />
       <Testimonials />
       <Pricing />

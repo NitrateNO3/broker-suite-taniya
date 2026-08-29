@@ -1,3 +1,5 @@
+import type { AppScreenKey } from '@/components/mockups/AppShot';
+
 /**
  * Single source of truth for everything that changes without a redesign.
  * PRD §30 — pricing, store URLs, contact details, testimonials, statistics,
@@ -19,8 +21,11 @@ export const site = {
   locale: 'en_IN',
 } as const;
 
+/** Legal entity, exactly as the app's About and Privacy screens state it. */
+export const legalEntity = 'BrokrSuite Technologies Pvt. Ltd.';
+
 export const contact: { email: string; phone: string; address: string } = {
-  email: 'hello@brokrsuite.com',
+  email: 'support@brokrsuite.com',
   phone: '',           // e.g. '+91 98765 43210' — hidden while empty
   address: '',         // e.g. 'Sector 62, Noida, India' — hidden while empty
 };
@@ -90,7 +95,12 @@ export type Feature = {
   summary: string;
   points: string[];
   icon: IconName;
-  visual: 'properties' | 'leads' | 'clients' | 'followups' | 'team' | 'dashboard';
+  /**
+   * The real app screen that shows this feature. Only set where a genuine
+   * screenshot exists — features without one render as text, rather than
+   * borrowing an unrelated screen or a drawn stand-in.
+   */
+  screen?: AppScreenKey;
 };
 
 export const features: Feature[] = [
@@ -108,7 +118,7 @@ export const features: Feature[] = [
       'Search and filter properties',
     ],
     icon: 'building',
-    visual: 'properties',
+    screen: 'explore',
   },
   {
     id: 'lead-management',
@@ -124,7 +134,6 @@ export const features: Feature[] = [
       'Complete lead history',
     ],
     icon: 'target',
-    visual: 'leads',
   },
   {
     id: 'client-management',
@@ -140,7 +149,6 @@ export const features: Feature[] = [
       'Communication history',
     ],
     icon: 'users',
-    visual: 'clients',
   },
   {
     id: 'follow-up-management',
@@ -154,7 +162,6 @@ export const features: Feature[] = [
       'Lead activity timeline',
     ],
     icon: 'bell',
-    visual: 'followups',
   },
   {
     id: 'team-management',
@@ -169,7 +176,6 @@ export const features: Feature[] = [
       'Monitor performance',
     ],
     icon: 'team',
-    visual: 'team',
   },
   {
     id: 'dashboard-analytics',
@@ -185,7 +191,7 @@ export const features: Feature[] = [
       'Sales pipeline',
     ],
     icon: 'chart',
-    visual: 'dashboard',
+    screen: 'dashboard',
   },
 ];
 
@@ -259,7 +265,7 @@ export const pricing = {
       featured: false,
       limits: { users: '1 user', properties: 'Property limit — TBC', leads: 'Lead limit — TBC', support: 'Email support' },
       features: ['Property management', 'Lead management', 'Client management', 'Follow-up reminders', 'Mobile app access'],
-      cta: { label: 'Get Started', href: '/contact/' },
+      cta: { label: 'Get Started', href: '/help/' },
     },
     {
       id: 'professional',
@@ -276,7 +282,7 @@ export const pricing = {
         'Property assignment',
         'Dashboard & analytics',
       ],
-      cta: { label: 'Get Started', href: '/contact/' },
+      cta: { label: 'Get Started', href: '/help/' },
     },
     {
       id: 'business',
@@ -293,7 +299,7 @@ export const pricing = {
         'Sales pipeline reporting',
         'Onboarding assistance',
       ],
-      cta: { label: 'Contact Sales', href: '/contact/' },
+      cta: { label: 'Contact Sales', href: '/help/' },
     },
   ] satisfies Plan[],
 };
@@ -338,36 +344,20 @@ export const testimonials = {
 
 export const faqs = [
   {
-    q: 'What is BrokrSuite?',
-    a: 'BrokrSuite is a real estate CRM and management platform designed to help brokers and agencies manage properties, leads, clients and sales workflows.',
+    q: 'How do I contact a property agent?',
+    a: 'On any property details page, tap the WhatsApp Inquiry button to open a direct chat with the assigned verified agent with prefilled property details.',
   },
   {
-    q: 'Who can use BrokrSuite?',
-    a: 'Individual brokers, agents, real estate agencies, property consultants and real estate sales teams.',
+    q: 'Are my saved properties saved permanently?',
+    a: 'Yes! Your favourites and saved properties are stored locally and will remain available even after restarting or updating the app.',
   },
   {
-    q: 'Is BrokrSuite available on mobile?',
-    a: 'Yes. BrokrSuite is designed for mobile and will be available through the Google Play Store and the Apple App Store.',
+    q: 'How do I list a new property as an agent?',
+    a: 'If you have an Agent account, tap the "+" button in the center of the bottom navigation bar to submit new listings with photos and specifications.',
   },
   {
-    q: 'Can I manage multiple properties?',
-    a: 'Yes. You can add, edit, categorize, search and filter your full property inventory, and track the status of each property.',
-  },
-  {
-    q: 'Can I manage my leads?',
-    a: 'Yes. Every lead can carry a status, source, assigned agent, follow-up date, notes and a complete activity history.',
-  },
-  {
-    q: 'Can I manage my team?',
-    a: 'Yes. You can add team members, assign leads and properties to them, and track team activity and performance from the dashboard.',
-  },
-  {
-    q: 'Is my data secure?',
-    a: 'Your business data is kept in your own account and is only accessible to you and the team members you invite. We do not publish security or compliance certifications we have not been independently audited for — if you have specific security requirements, contact us and we will answer them directly.',
-  },
-  {
-    q: 'How can I get started?',
-    a: 'Download the app once it is published on your store, or contact the BrokrSuite team and we will walk you through the platform.',
+    q: 'How can I delete my account and data?',
+    a: 'You can permanently delete your account anytime from Profile \u2192 Delete My Account. All your credentials and session data will be permanently wiped.',
   },
 ];
 
@@ -385,4 +375,6 @@ export type IconName =
   | 'check'
   | 'search'
   | 'shield'
-  | 'sparkle';
+  | 'sparkle'
+  | 'mail'
+  | 'message';

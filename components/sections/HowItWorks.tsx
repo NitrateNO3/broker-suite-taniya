@@ -2,9 +2,9 @@ import { Container, Section, SectionHeading } from '@/components/ui/Section';
 import { Reveal } from '@/components/ui/Reveal';
 import { steps } from '@/config/site';
 
-export function HowItWorks() {
+export function HowItWorks({ compactTop = false }: { compactTop?: boolean } = {}) {
   return (
-    <Section id="how-it-works">
+    <Section id="how-it-works" compactTop={compactTop}>
       <Container>
         <SectionHeading
           eyebrow="How it works"

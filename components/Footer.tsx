@@ -24,13 +24,13 @@ export function Footer() {
     <footer className="border-t border-ink-800 bg-ink-950 text-ink-300">
       <Container className="py-14 lg:py-16">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
             <Logo variant="light" withTagline />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-400">{site.shortDescription}</p>
             <StoreButtons tone="dark" className="mt-6" />
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-8">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-9">
             {footerNav.map((group) => (
               <div key={group.heading}>
                 <h2 className="text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-white">

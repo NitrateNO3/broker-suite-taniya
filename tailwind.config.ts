@@ -69,9 +69,22 @@ const config: Config = {
           from: { opacity: '0', transform: 'translateY(12px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
+        /* Slow, large-radius movement for the hero's background washes. At
+           this speed it reads as depth rather than as something animating. */
+        drift: {
+          '0%, 100%': { transform: 'translate3d(0, 0, 0) scale(1)' },
+          '50%': { transform: 'translate3d(0, -22px, 0) scale(1.07)' },
+        },
+        bob: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(5px)' },
+        },
       },
       animation: {
         'fade-up': 'fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both',
+        drift: 'drift 16s ease-in-out infinite',
+        'drift-slow': 'drift 24s ease-in-out infinite reverse',
+        bob: 'bob 2.2s ease-in-out infinite',
       },
     },
   },

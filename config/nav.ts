@@ -1,16 +1,27 @@
 /**
- * Navigation. "Solutions", "How It Works" and "FAQ" are homepage sections in
- * the PRD rather than standalone pages, so they resolve to anchors — every
- * link here points at something that actually exists.
+ * Navigation. "Solutions" and "FAQ" are homepage sections rather than
+ * standalone pages, so they resolve to anchors — every link here points at
+ * something that actually exists.
  */
-export const mainNav = [
+export type NavLink = { label: string; href: string };
+export type NavItem = NavLink & { children?: readonly NavLink[] };
+
+export const mainNav: readonly NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Features', href: '/features/' },
   { label: 'Solutions', href: '/#solutions' },
-  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'How It Works', href: '/how-it-works/' },
   { label: 'Pricing', href: '/pricing/' },
-  { label: 'FAQ', href: '/#faq' },
-  { label: 'Contact', href: '/contact/' },
+  {
+    label: 'Help',
+    href: '/help/',
+    children: [
+      { label: 'Help & Support', href: '/help/' },
+      { label: 'FAQ', href: '/#faq' },
+      { label: 'About', href: '/about/' },
+      { label: 'Privacy Policy', href: '/privacy/' },
+    ],
+  },
 ] as const;
 
 export const footerNav = [
@@ -18,8 +29,8 @@ export const footerNav = [
     heading: 'Product',
     links: [
       { label: 'Features', href: '/features/' },
+      { label: 'How It Works', href: '/how-it-works/' },
       { label: 'Pricing', href: '/pricing/' },
-      { label: 'Solutions', href: '/#solutions' },
       { label: 'Download App', href: '/#download' },
     ],
   },
@@ -27,17 +38,15 @@ export const footerNav = [
     heading: 'Company',
     links: [
       { label: 'About', href: '/about/' },
-      { label: 'Contact', href: '/contact/' },
+      { label: 'Solutions', href: '/#solutions' },
     ],
   },
   {
     heading: 'Resources',
     links: [
+      { label: 'Help & Support', href: '/help/' },
       { label: 'FAQ', href: '/#faq' },
       { label: 'Privacy Policy', href: '/privacy/' },
-      { label: 'Terms & Conditions', href: '/terms/' },
-      { label: 'Cookie Policy', href: '/cookies/' },
-      { label: 'Refund Policy', href: '/refund/' },
     ],
   },
 ] as const;

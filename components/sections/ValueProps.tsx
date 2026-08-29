@@ -1,4 +1,5 @@
 import { Icon } from '@/components/Icon';
+import { Button } from '@/components/ui/Button';
 import { Container, Section, SectionHeading } from '@/components/ui/Section';
 import { Reveal } from '@/components/ui/Reveal';
 import { valueProps } from '@/config/site';
@@ -24,6 +25,15 @@ export function ValueProps() {
               </div>
             </Reveal>
           ))}
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <Button href="/features/" variant="secondary" size="lg">
+            See all features in detail
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4" aria-hidden="true">
+              <path d="M5 12h13M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Button>
         </div>
       </Container>
     </Section>

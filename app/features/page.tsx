@@ -27,15 +27,18 @@ export default function FeaturesPage() {
       <div className="border-b border-ink-100 bg-ink-50">
         <Container className="py-5">
           <nav aria-label="Features on this page">
-            <ul className="flex flex-wrap gap-2">
+            {/* One row at every width: an even six-column grid once there is
+                room for it, and a single scrolling row below that — rather
+                than wrapping and leaving the last chip stranded on its own. */}
+            <ul className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [scrollbar-width:none] lg:mx-0 lg:grid lg:grid-cols-6 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden">
               {features.map((feature) => (
-                <li key={feature.id}>
+                <li key={feature.id} className="shrink-0 lg:shrink">
                   <a
                     href={`#${feature.id}`}
-                    className="inline-flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm font-medium text-ink-600 ring-1 ring-inset ring-ink-200 transition-colors hover:text-ink-950 hover:ring-ink-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                    className="flex items-center justify-center gap-1.5 rounded-lg bg-white px-3 py-2 text-sm font-medium text-ink-600 ring-1 ring-inset ring-ink-200 transition-colors hover:text-ink-950 hover:ring-ink-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 lg:h-full lg:px-2 lg:text-xs"
                   >
-                    <Icon name={feature.icon} className="h-4 w-4 text-brand-600" />
-                    {feature.title}
+                    <Icon name={feature.icon} className="h-4 w-4 shrink-0 text-brand-600 lg:h-3.5 lg:w-3.5" />
+                    <span className="whitespace-nowrap">{feature.title}</span>
                   </a>
                 </li>
               ))}
