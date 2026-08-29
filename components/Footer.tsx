@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { DevelopedBy } from '@/components/DevelopedBy';
+import { SiteCredits } from '@/components/SiteCredits';
 import { Logo } from '@/components/Logo';
 import { StoreButtons } from '@/components/StoreButtons';
 import { Container } from '@/components/ui/Section';
@@ -107,7 +107,7 @@ export function Footer() {
           <p className="text-sm text-ink-500">
             © {year} {site.name}. All rights reserved.
           </p>
-          <DevelopedBy />
+          <SiteCredits />
         </div>
       </Container>
     </footer>
