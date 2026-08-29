@@ -50,23 +50,15 @@ export function Hero() {
       {/* --- Content --- */}
       <Container className="relative py-16 sm:py-20">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1.5 text-xs font-semibold text-brand-700 shadow-xs ring-1 ring-inset ring-brand-100 backdrop-blur-sm motion-safe:animate-fade-up">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden="true" />
-            Real Estate CRM &amp; Property Management
-          </p>
-
           {/* text-balance keeps "business," from being orphaned on its own line. */}
-          <h1
-            className="mt-6 text-display-lg font-bold text-ink-950 [text-wrap:balance] motion-safe:animate-fade-up"
-            style={{ animationDelay: '60ms' }}
-          >
+          <h1 className="text-display-lg font-bold text-ink-950 [text-wrap:balance] motion-safe:animate-fade-up">
             Your complete real estate business,{' '}
             <span className="text-brand-600">in one suite.</span>
           </h1>
 
           <p
             className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-ink-500 sm:text-lg motion-safe:animate-fade-up"
-            style={{ animationDelay: '120ms' }}
+            style={{ animationDelay: '60ms' }}
           >
             Manage properties, leads, clients, follow-ups and your entire real estate workflow from one
             powerful platform.
@@ -74,7 +66,7 @@ export function Hero() {
 
           <div
             className="mt-9 flex flex-col justify-center gap-3 sm:flex-row motion-safe:animate-fade-up"
-            style={{ animationDelay: '180ms' }}
+            style={{ animationDelay: '120ms' }}
           >
             <Button href="/help/" size="lg" className="sm:w-auto" data-analytics="get-started-click">
               Get Started
@@ -89,7 +81,7 @@ export function Hero() {
             onto a line of its own. */}
         <ul
           className="mt-12 flex flex-col items-center gap-x-8 gap-y-2.5 sm:flex-row sm:flex-wrap sm:justify-center motion-safe:animate-fade-up"
-          style={{ animationDelay: '240ms' }}
+          style={{ animationDelay: '180ms' }}
         >
           {assurances.map((item) => (
             <li key={item} className="inline-flex items-center gap-2 text-sm text-ink-500">
