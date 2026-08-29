@@ -1,4 +1,5 @@
 import { LogoMark } from '@/components/Logo';
+import { PhoneShowcase } from '@/components/mockups/PhoneShowcase';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Section';
 
@@ -47,58 +48,69 @@ export function Hero() {
         className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[46rem] w-[46rem] -translate-x-1/2 -translate-y-1/2 text-ink-950 opacity-[0.028]"
       />
 
-      {/* --- Content --- */}
-      <Container className="relative py-16 sm:py-20">
-        <div className="mx-auto max-w-3xl text-center">
-          {/* text-balance keeps "business," from being orphaned on its own line. */}
-          <h1 className="text-display-lg font-bold text-ink-950 [text-wrap:balance] motion-safe:animate-fade-up">
-            Your complete real estate business,{' '}
-            <span className="text-brand-600">in one suite.</span>
-          </h1>
+      {/* --- Content ---
+          Three items in one grid. On desktop the copy and the assurance list
+          stack in the left column while the product shot spans both rows on
+          the right; on mobile the shot is pulled up between the buttons and
+          the list, so it is not stranded below the fold. */}
+      <Container className="relative py-14 sm:py-16">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-8">
+          <div className="text-center lg:col-span-6 lg:col-start-1 lg:row-start-1 lg:text-left">
+            <h1 className="text-display-lg font-bold text-ink-950 motion-safe:animate-fade-up">
+              Your complete real estate business,{' '}
+              {/* Its own line: balancing the whole heading strands "in" instead. */}
+              <span className="block text-brand-600">in one suite.</span>
+            </h1>
 
-          <p
-            className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-ink-500 sm:text-lg motion-safe:animate-fade-up"
-            style={{ animationDelay: '60ms' }}
-          >
-            Manage properties, leads, clients, follow-ups and your entire real estate workflow from one
-            powerful platform.
-          </p>
+            <p
+              className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-ink-500 sm:text-lg lg:mx-0 motion-safe:animate-fade-up"
+              style={{ animationDelay: '60ms' }}
+            >
+              Manage properties, leads, clients, follow-ups and your entire real estate workflow from one
+              powerful platform.
+            </p>
+
+            <div
+              className="mt-9 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start motion-safe:animate-fade-up"
+              style={{ animationDelay: '120ms' }}
+            >
+              <Button href="/help/" size="lg" className="sm:w-auto" data-analytics="get-started-click">
+                Get Started
+              </Button>
+              <Button href="/how-it-works/" size="lg" variant="secondary" className="sm:w-auto">
+                See how it works
+              </Button>
+            </div>
+          </div>
 
           <div
-            className="mt-9 flex flex-col justify-center gap-3 sm:flex-row motion-safe:animate-fade-up"
-            style={{ animationDelay: '120ms' }}
+            className="order-2 lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 motion-safe:animate-fade-up"
+            style={{ animationDelay: '150ms' }}
           >
-            <Button href="/help/" size="lg" className="sm:w-auto" data-analytics="get-started-click">
-              Get Started
-            </Button>
-            <Button href="/how-it-works/" size="lg" variant="secondary" className="sm:w-auto">
-              See how it works
-            </Button>
+            <PhoneShowcase />
           </div>
-        </div>
 
-        {/* Outside the 3xl text column: at that width the fourth item wraps
-            onto a line of its own. */}
-        <ul
-          className="mt-12 flex flex-col items-center gap-x-8 gap-y-2.5 sm:flex-row sm:flex-wrap sm:justify-center motion-safe:animate-fade-up"
-          style={{ animationDelay: '180ms' }}
-        >
-          {assurances.map((item) => (
-            <li key={item} className="inline-flex items-center gap-2 text-sm text-ink-500">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.4"
-                aria-hidden="true"
-                className="h-3.5 w-3.5 shrink-0 text-brand-500"
-              >
-                <path d="M4 12.5l5 5 11-11" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              {item}
-            </li>
-          ))}
-        </ul>
+          <ul
+            className="order-3 grid justify-center gap-x-6 gap-y-2.5 sm:grid-cols-2 sm:justify-start lg:col-span-6 lg:col-start-1 lg:row-start-2 motion-safe:animate-fade-up"
+            style={{ animationDelay: '180ms' }}
+          >
+            {assurances.map((item) => (
+              <li key={item} className="inline-flex items-center gap-2 text-sm text-ink-500">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.4"
+                  aria-hidden="true"
+                  className="h-3.5 w-3.5 shrink-0 text-brand-500"
+                >
+                  <path d="M4 12.5l5 5 11-11" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </Container>
 
       {/* Scroll cue — the page is a full viewport tall now, so say so. */}

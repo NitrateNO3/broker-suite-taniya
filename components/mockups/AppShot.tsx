@@ -63,16 +63,29 @@ export const screenOrder: AppScreenKey[] = [
 ];
 
 /** One app screenshot, sized to the exported 562×1281 asset. */
-export function AppShot({ screen, priority = false }: { screen: AppScreenKey; priority?: boolean }) {
+export function AppShot({
+  screen,
+  priority = false,
+  /** Ornamental use (a thumbnail in a composition): drop it from the a11y tree
+      rather than reading a long screen description no one asked for. */
+  decorative = false,
+  sizes = '(min-width: 640px) 256px, 240px',
+}: {
+  screen: AppScreenKey;
+  priority?: boolean;
+  decorative?: boolean;
+  sizes?: string;
+}) {
   const { src, alt } = appScreens[screen];
   return (
     <Image
       src={src}
-      alt={alt}
+      alt={decorative ? '' : alt}
+      aria-hidden={decorative || undefined}
       width={562}
       height={1281}
       priority={priority}
-      sizes="(min-width: 640px) 256px, 240px"
+      sizes={sizes}
       className="block h-auto w-full"
     />
   );
