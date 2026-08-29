@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { DevelopedBy } from '@/components/DevelopedBy';
 import { Logo } from '@/components/Logo';
 import { StoreButtons } from '@/components/StoreButtons';
 import { Container } from '@/components/ui/Section';
@@ -102,10 +103,11 @@ export function Footer() {
 
         {/* Legal links already sit in the Resources column above, so the
             bottom bar carries the copyright only. */}
-        <div className="mt-12 border-t border-ink-800 pt-6">
+        <div className="mt-12 flex flex-col-reverse items-start gap-6 border-t border-ink-800 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-ink-500">
             © {year} {site.name}. All rights reserved.
           </p>
+          <DevelopedBy />
         </div>
       </Container>
     </footer>
