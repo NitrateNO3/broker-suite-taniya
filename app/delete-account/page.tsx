@@ -15,85 +15,84 @@ const removed = [
   'Your profile and account credentials',
   'Saved and favourited properties',
   'Active session tokens',
-  'Inquiry and support history tied to your account',
+  'Inquiry and support history',
 ];
 
+/*
+ * Deliberately sized to sit within one screen: the header is compact and the
+ * guidance lives beside the form rather than stacked above it, so nobody has
+ * to scroll to reach the thing the page exists for.
+ */
 export default function DeleteAccountPage() {
   return (
     <>
       <PageHeader
+        compact
         tone="danger"
         eyebrow="Your account"
         title="Delete your account"
-        body={`You can remove your ${site.name} account and its data at any time — from inside the app, or by sending us a request here.`}
+        body={`Remove your ${site.name} account and its data — from inside the app, or by requesting it here.`}
       />
 
-      <Section compactTop>
+      <Section compactTop className="!pt-6 !pb-10 sm:!pt-8 sm:!pb-12">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-7">
-              <div className="rounded-card-lg border border-ink-200/70 bg-ink-50 p-6 sm:p-8">
-                <h2 className="text-base font-semibold text-ink-950">Fastest: delete it in the app</h2>
-                <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-600">
-                  Open {site.name} and go to <strong className="font-semibold text-ink-800">Profile →
-                  Delete My Account</strong>. The account is removed straight away, with no request to wait
-                  on.
-                </p>
-              </div>
-
-              <h2 className="mt-10 text-xl font-bold text-ink-950 sm:text-2xl">
-                Or request it here
-              </h2>
-              <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-600">
+              <h2 className="text-lg font-bold text-ink-950">Request account deletion</h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-500">
                 Use this if you can no longer sign in. We only need enough to find the right account.
               </p>
-
-              <div className="mt-6">
+              <div className="mt-4">
                 <DeleteAccountForm />
               </div>
             </div>
 
-            <aside className="lg:col-span-5">
-              <div className="rounded-card-lg border border-red-200 bg-red-50/40 p-6 sm:p-8">
-                <h2 className="text-base font-semibold text-ink-950">What gets deleted</h2>
-                <ul className="mt-4 space-y-3">
+            <aside className="space-y-4 lg:col-span-5">
+              <div className="rounded-card border border-ink-200/70 bg-ink-50 p-5">
+                <h2 className="text-sm font-semibold text-ink-950">Faster: delete it in the app</h2>
+                <p className="mt-1.5 text-[0.8125rem] leading-relaxed text-ink-600">
+                  Open {site.name} and go to{' '}
+                  <strong className="font-semibold text-ink-800">Profile → Delete My Account</strong>. It is
+                  removed straight away, with no request to wait on.
+                </p>
+              </div>
+
+              <div className="rounded-card border border-red-200 bg-red-50/40 p-5">
+                <h2 className="text-sm font-semibold text-ink-950">What gets deleted</h2>
+                <ul className="mt-3 space-y-2">
                   {removed.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
+                    <li key={item} className="flex items-start gap-2">
                       <span
                         aria-hidden="true"
-                        className="mt-[0.1875rem] inline-flex h-[1.125rem] w-[1.125rem] shrink-0 items-center justify-center rounded-full bg-red-50 text-red-600"
+                        className="mt-[0.1875rem] inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600"
                       >
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="h-2.5 w-2.5">
-                          <path d="M4 12.5l5 5 11-11" strokeLinecap="round" strokeLinejoin="round" />
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" className="h-2 w-2">
+                          <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
                         </svg>
                       </span>
-                      <span className="text-[0.9375rem] leading-snug text-ink-700">{item}</span>
+                      <span className="text-[0.8125rem] leading-snug text-ink-700">{item}</span>
                     </li>
                   ))}
                 </ul>
-
-                <p className="mt-6 border-t border-red-200/70 pt-6 text-sm font-medium leading-relaxed text-red-800">
-                  Deletion is permanent and cannot be undone. Records we are required to keep by law are
-                  retained; everything else is removed or anonymised.
-                </p>
-                <p className="mt-4 text-sm leading-relaxed text-ink-500">
-                  Prefer email? Write to{' '}
-                  <a
-                    className="font-medium text-red-700 underline underline-offset-4"
-                    href={`mailto:${contact.email}?subject=${encodeURIComponent('Account deletion request')}`}
-                  >
-                    {contact.email}
-                  </a>{' '}
-                  from the address on the account.
-                </p>
-                <p className="mt-4 text-xs leading-relaxed text-ink-400">
-                  Requests are handled by {legalEntity}. See our{' '}
-                  <a className="underline underline-offset-4 hover:text-ink-600" href="/privacy/">
-                    Privacy Policy
-                  </a>{' '}
-                  for how we treat your data.
+                <p className="mt-3.5 border-t border-red-200/70 pt-3 text-[0.8125rem] font-medium leading-relaxed text-red-800">
+                  Deletion is permanent and cannot be undone.
                 </p>
               </div>
+
+              <p className="text-xs leading-relaxed text-ink-500">
+                Prefer email? Write to{' '}
+                <a
+                  className="font-medium text-red-700 underline underline-offset-4"
+                  href={`mailto:${contact.email}?subject=${encodeURIComponent('Account deletion request')}`}
+                >
+                  {contact.email}
+                </a>{' '}
+                from the address on the account. Requests are handled by {legalEntity}; see our{' '}
+                <a className="underline underline-offset-4 hover:text-ink-700" href="/privacy/">
+                  Privacy Policy
+                </a>
+                .
+              </p>
             </aside>
           </div>
         </Container>

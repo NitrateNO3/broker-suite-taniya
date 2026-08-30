@@ -13,7 +13,7 @@ type Status =
   | { kind: 'fallback'; mailto: string };
 
 const field =
-  'w-full rounded-xl border border-ink-200 bg-white px-4 py-3 text-[0.9375rem] text-ink-900 placeholder:text-ink-400 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/30';
+  'w-full rounded-xl border border-ink-200 bg-white px-3.5 py-2.5 text-[0.9375rem] text-ink-900 placeholder:text-ink-400 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/30';
 
 export function DeleteAccountForm() {
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
@@ -95,16 +95,16 @@ export function DeleteAccountForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-5">
-      <div className="grid gap-5 sm:grid-cols-2">
+    <form onSubmit={onSubmit} noValidate className="space-y-3.5">
+      <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-ink-800">
+          <label htmlFor="name" className="mb-1 block text-sm font-medium text-ink-800">
             Full name <span className="text-error">*</span>
           </label>
           <input id="name" name="name" required autoComplete="name" className={field} placeholder="Your name" />
         </div>
         <div>
-          <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-ink-800">
+          <label htmlFor="email" className="mb-1 block text-sm font-medium text-ink-800">
             Email on the account <span className="text-error">*</span>
           </label>
           <input id="email" name="email" type="email" required autoComplete="email" className={field} placeholder="you@example.com" />
@@ -112,26 +112,26 @@ export function DeleteAccountForm() {
       </div>
 
       <div>
-        <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-ink-800">
+        <label htmlFor="phone" className="mb-1 block text-sm font-medium text-ink-800">
           Phone on the account <span className="text-ink-400">(optional)</span>
         </label>
         <input id="phone" name="phone" autoComplete="tel" className={field} placeholder="Helps us find the right account" />
       </div>
 
       <div>
-        <label htmlFor="reason" className="mb-1.5 block text-sm font-medium text-ink-800">
+        <label htmlFor="reason" className="mb-1 block text-sm font-medium text-ink-800">
           Reason <span className="text-ink-400">(optional)</span>
         </label>
-        <textarea id="reason" name="reason" rows={4} className={field} placeholder="Anything you would like us to know." />
+        <textarea id="reason" name="reason" rows={2} className={field} placeholder="Anything you would like us to know." />
       </div>
 
-      <label className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50/60 p-4">
+      <label className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50/60 p-3.5">
         <input
           type="checkbox"
           name="confirm"
           className="mt-0.5 h-4 w-4 shrink-0 rounded border-red-300 text-red-600 focus:ring-red-500"
         />
-        <span className="text-sm leading-relaxed text-ink-700">
+        <span className="text-[0.8125rem] leading-relaxed text-ink-700">
           I understand that deleting my {site.name} account permanently removes my profile, saved
           properties and session data, and that this cannot be undone.
         </span>
@@ -159,7 +159,7 @@ export function DeleteAccountForm() {
         </div>
       )}
 
-      <Button type="submit" variant="danger" size="lg" disabled={status.kind === 'sending'} className="w-full sm:w-auto">
+      <Button type="submit" variant="danger" size="md" disabled={status.kind === 'sending'} className="w-full sm:w-auto">
         {status.kind === 'sending' ? 'Submitting…' : 'Request account deletion'}
       </Button>
     </form>
