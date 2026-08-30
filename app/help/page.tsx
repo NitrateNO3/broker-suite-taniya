@@ -59,7 +59,7 @@ export default function HelpPage() {
               </span>
               <h2 className="mt-4 text-base font-semibold text-ink-950">Delete your account</h2>
               <p className="mt-1 text-sm text-ink-500 group-hover:text-brand-700">
-                Remove your account and data.
+                How to remove your account and data.
               </p>
             </Link>
           </div>
