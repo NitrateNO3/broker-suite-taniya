@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { pageMetadata } from '@/lib/seo';
 import { PageHeader } from '@/components/PageHeader';
 import { Icon } from '@/components/Icon';
@@ -25,7 +26,7 @@ export default function HelpPage() {
 
       <Section compactTop>
         <Container>
-          <div className="grid max-w-3xl gap-4 sm:grid-cols-2">
+          <div className="grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <a
               href={`mailto:${contact.email}`}
               className="group rounded-card border border-ink-200/70 bg-white p-6 transition hover:border-brand-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
@@ -48,6 +49,19 @@ export default function HelpPage() {
                 Chat with support from inside the {site.name} app.
               </p>
             </div>
+
+            <Link
+              href="/delete-account/"
+              className="group rounded-card border border-ink-200/70 bg-white p-6 transition hover:border-brand-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+            >
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-ink-100 text-ink-600">
+                <Icon name="user" className="h-5 w-5" />
+              </span>
+              <h2 className="mt-4 text-base font-semibold text-ink-950">Delete your account</h2>
+              <p className="mt-1 text-sm text-ink-500 group-hover:text-brand-700">
+                Remove your account and data.
+              </p>
+            </Link>
           </div>
         </Container>
       </Section>

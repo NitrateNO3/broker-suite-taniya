@@ -82,7 +82,8 @@ export default function PrivacyPage() {
       <p>
         In compliance with Google Play Store, Apple App Store, and international privacy laws, you have the
         full right to delete your account and all associated personal data at any time directly through the
-        app (Profile → Delete My Account) or by emailing{' '}
+        app (Profile → Delete My Account), by{' '}
+        <a href="/delete-account/">submitting a deletion request</a>, or by emailing{' '}
         <a href={`mailto:${contact.email}`}>{contact.email}</a>. Upon request, all active session tokens,
         profile records, and saved data are permanently removed or anonymized.
       </p>

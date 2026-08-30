@@ -20,6 +20,7 @@ export const mainNav: readonly NavItem[] = [
       { label: 'FAQ', href: '/#faq' },
       { label: 'About', href: '/about/' },
       { label: 'Privacy Policy', href: '/privacy/' },
+      { label: 'Delete Account', href: '/delete-account/' },
     ],
   },
 ] as const;
@@ -47,6 +48,7 @@ export const footerNav = [
       { label: 'Help & Support', href: '/help/' },
       { label: 'FAQ', href: '/#faq' },
       { label: 'Privacy Policy', href: '/privacy/' },
+      { label: 'Delete Account', href: '/delete-account/' },
     ],
   },
 ] as const;
