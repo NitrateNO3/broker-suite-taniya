@@ -17,15 +17,15 @@ export const site = {
   shortDescription: 'A smarter way to manage your real estate business.',
   // Update to the production domain before deploying — used for canonical URLs,
   // Open Graph tags and sitemap.xml.
-  url: 'https://brokrsuite.com',
+  url: 'https://brokrsuite.in',
   locale: 'en_IN',
 } as const;
 
 /** Legal entity, exactly as the app's About and Privacy screens state it. */
-export const legalEntity = 'BrokrSuite Technologies Pvt. Ltd.';
+export const legalEntity = 'QuenchMark';
 
 export const contact: { email: string; phone: string; address: string } = {
-  email: 'support@brokrsuite.com',
+  email: 'support@brokrsuite.in',
   phone: '',           // e.g. '+91 98765 43210' — hidden while empty
   address: '',         // e.g. 'Sector 62, Noida, India' — hidden while empty
 };
