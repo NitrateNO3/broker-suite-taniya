@@ -25,7 +25,7 @@ const removed = [
  */
 export default function DeleteAccountPage() {
   return (
-    <>
+    <div className="flex min-h-[calc(100svh-4rem)] flex-col lg:min-h-[calc(100svh-4.5rem)]">
       <PageHeader
         compact
         tone="danger"
@@ -34,7 +34,10 @@ export default function DeleteAccountPage() {
         body={`Remove your ${site.name} account and its data — from inside the app, or by requesting it here.`}
       />
 
-      <Section compactTop className="!pt-6 !pb-10 sm:!pt-8 sm:!pb-12">
+      <Section
+        compactTop
+        className="flex flex-1 flex-col justify-center !pt-6 !pb-10 sm:!pt-8 sm:!pb-12"
+      >
         <Container>
           <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-7">
@@ -97,6 +100,6 @@ export default function DeleteAccountPage() {
           </div>
         </Container>
       </Section>
-    </>
+    </div>
   );
 }
