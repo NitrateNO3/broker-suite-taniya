@@ -13,7 +13,7 @@ type Status =
   | { kind: 'fallback'; mailto: string };
 
 const field =
-  'w-full rounded-xl border border-ink-200 bg-white px-4 py-3 text-[0.9375rem] text-ink-900 placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30';
+  'w-full rounded-xl border border-ink-200 bg-white px-4 py-3 text-[0.9375rem] text-ink-900 placeholder:text-ink-400 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-500/30';
 
 export function DeleteAccountForm() {
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
@@ -85,7 +85,7 @@ export function DeleteAccountForm() {
         <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-600">
           We have your request and will confirm by email once the account and its data have been removed.
           If you do not hear back within a few days, email us at{' '}
-          <a className="font-medium text-brand-700 underline underline-offset-4" href={`mailto:${contact.email}`}>
+          <a className="font-medium text-red-700 underline underline-offset-4" href={`mailto:${contact.email}`}>
             {contact.email}
           </a>
           .
@@ -125,11 +125,11 @@ export function DeleteAccountForm() {
         <textarea id="reason" name="reason" rows={4} className={field} placeholder="Anything you would like us to know." />
       </div>
 
-      <label className="flex items-start gap-3 rounded-xl bg-ink-50 p-4">
+      <label className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50/60 p-4">
         <input
           type="checkbox"
           name="confirm"
-          className="mt-0.5 h-4 w-4 shrink-0 rounded border-ink-300 text-brand-600 focus:ring-brand-500"
+          className="mt-0.5 h-4 w-4 shrink-0 rounded border-red-300 text-red-600 focus:ring-red-500"
         />
         <span className="text-sm leading-relaxed text-ink-700">
           I understand that deleting my {site.name} account permanently removes my profile, saved
@@ -159,7 +159,7 @@ export function DeleteAccountForm() {
         </div>
       )}
 
-      <Button type="submit" size="lg" disabled={status.kind === 'sending'} className="w-full sm:w-auto">
+      <Button type="submit" variant="danger" size="lg" disabled={status.kind === 'sending'} className="w-full sm:w-auto">
         {status.kind === 'sending' ? 'Submitting…' : 'Request account deletion'}
       </Button>
     </form>

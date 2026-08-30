@@ -134,9 +134,13 @@ export function Navbar() {
                               href={child.href}
                               aria-current={isActive(child.href) ? 'page' : undefined}
                               className={`block rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
-                                isActive(child.href)
-                                  ? 'bg-brand-50 text-brand-700'
-                                  : 'text-ink-600 hover:bg-ink-50 hover:text-ink-950'
+                                child.danger
+                                  ? isActive(child.href)
+                                    ? 'bg-red-50 text-red-700'
+                                    : 'text-red-600 hover:bg-red-50 hover:text-red-700'
+                                  : isActive(child.href)
+                                    ? 'bg-brand-50 text-brand-700'
+                                    : 'text-ink-600 hover:bg-ink-50 hover:text-ink-950'
                               }`}
                             >
                               {child.label}

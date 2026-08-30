@@ -3,7 +3,7 @@
  * standalone pages, so they resolve to anchors — every link here points at
  * something that actually exists.
  */
-export type NavLink = { label: string; href: string };
+export type NavLink = { label: string; href: string; danger?: boolean };
 export type NavItem = NavLink & { children?: readonly NavLink[] };
 
 export const mainNav: readonly NavItem[] = [
@@ -20,7 +20,7 @@ export const mainNav: readonly NavItem[] = [
       { label: 'FAQ', href: '/#faq' },
       { label: 'About', href: '/about/' },
       { label: 'Privacy Policy', href: '/privacy/' },
-      { label: 'Delete Account', href: '/delete-account/' },
+      { label: 'Delete Account', href: '/delete-account/', danger: true },
     ],
   },
 ] as const;
@@ -48,7 +48,7 @@ export const footerNav = [
       { label: 'Help & Support', href: '/help/' },
       { label: 'FAQ', href: '/#faq' },
       { label: 'Privacy Policy', href: '/privacy/' },
-      { label: 'Delete Account', href: '/delete-account/' },
+      { label: 'Delete Account', href: '/delete-account/', danger: true },
     ],
   },
 ] as const;

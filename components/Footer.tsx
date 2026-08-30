@@ -42,7 +42,11 @@ export function Footer() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="rounded text-sm text-ink-400 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
+                        className={`rounded text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 ${
+                          'danger' in link && link.danger
+                            ? 'text-red-400 hover:text-red-300'
+                            : 'text-ink-400 hover:text-white'
+                        }`}
                       >
                         {link.label}
                       </Link>
