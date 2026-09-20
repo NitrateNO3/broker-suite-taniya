@@ -44,7 +44,7 @@ export const social: Record<SocialKey, string> = {
  * a real URL is set (PRD §5, §24, §31 — no fake store links).
  */
 export const stores: { appStore: string | null; googlePlay: string | null } = {
-  appStore: null,
+  appStore: 'https://apps.apple.com/in/app/brokrsuite/id6807412019',
   googlePlay: null,
 };
 

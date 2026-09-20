@@ -23,8 +23,8 @@ export function AppShowcase() {
             <p className="text-sm font-semibold text-white">Download {site.name}</p>
             <StoreButtons tone="dark" className="mt-3" />
             <p className="mt-4 max-w-sm text-xs leading-relaxed text-ink-500">
-              Store listings are being prepared. These buttons will link to the live App Store and Google
-              Play pages as soon as the apps are published.
+              Available now on the App Store. The Google Play listing is being prepared, and that button
+              will go live as soon as the Android app is published.
             </p>
           </div>
 
