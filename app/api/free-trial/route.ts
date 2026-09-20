@@ -10,12 +10,15 @@ export const runtime = 'nodejs';
  * The recipient and the message body are fixed here, so the route cannot be
  * used to send arbitrary mail to arbitrary addresses.
  *
- * Delivery is configured with ONE of:
+ * Delivery, in order of preference:
  *   RESEND_API_KEY (+ optional TRIAL_MAIL_FROM)  — sends via Resend
  *   TRIAL_WEBHOOK                                — POSTs the JSON onward
+ *   otherwise                                    — relays via FormSubmit
  *
- * With neither set the route answers 503 and the form says the enquiry has not
- * been sent, offering a prefilled email instead of faking success.
+ * The FormSubmit default needs no credentials, but the inbox owner must click
+ * the "Activate Form" link FormSubmit emails on the first submission. Until
+ * then — or if every route fails — this answers 502/503 and the form says the
+ * enquiry has not been sent, rather than faking success.
  */
 
 const str = (v: unknown, max: number) => (typeof v === 'string' ? v.trim().slice(0, max) : '');
@@ -88,10 +91,36 @@ export async function POST(request: Request) {
       }
       return NextResponse.json({ ok: true });
     }
+    // No credentials configured: relay through FormSubmit, which forwards to
+    // `trialInbox` once that inbox has activated the form.
+    const relay = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(trialInbox)}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        // FormSubmit rejects requests without a site origin.
+        Origin: site.url,
+        Referer: `${site.url}/free-trial/`,
+      },
+      body: JSON.stringify({
+        _subject: subject,
+        _captcha: 'false',
+        _template: 'table',
+        Name: `${firstName} ${lastName}`,
+        Email: email,
+        Phone: phone,
+        Company: company,
+        Received: receivedAt,
+      }),
+    });
+    const result = (await relay.json().catch(() => ({}))) as { success?: string; message?: string };
+    if (relay.ok && result.success === 'true') {
+      return NextResponse.json({ ok: true });
+    }
+    console.error('FormSubmit did not accept the enquiry:', relay.status, result.message);
+    return NextResponse.json({ error: 'delivery-failed' }, { status: 502 });
   } catch (error) {
     console.error('Could not deliver the trial enquiry:', error);
     return NextResponse.json({ error: 'delivery-failed' }, { status: 502 });
   }
-
-  return NextResponse.json({ error: 'not-configured' }, { status: 503 });
 }
