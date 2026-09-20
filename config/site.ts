@@ -45,7 +45,7 @@ export const social: Record<SocialKey, string> = {
  */
 export const stores: { appStore: string | null; googlePlay: string | null } = {
   appStore: 'https://apps.apple.com/in/app/brokrsuite/id6807412019',
-  googlePlay: null,
+  googlePlay: 'https://play.google.com/store/apps/details?id=com.brokrsuite.app',
 };
 
 /**
