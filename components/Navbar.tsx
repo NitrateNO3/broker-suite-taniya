@@ -155,11 +155,11 @@ export function Navbar() {
             </ul>
 
             <div className="hidden items-center gap-2.5 lg:flex">
-              <Button href="/#download" variant="secondary" size="sm">
+              <Button href="/#download" variant="secondary" size="sm" className="hidden xl:inline-flex">
                 Download App
               </Button>
-              <Button href="/help/" size="sm" data-analytics="get-started-click">
-                Get Started
+              <Button href="/free-trial/" size="sm" data-analytics="free-trial-click">
+                Book Your Free Trial
               </Button>
             </div>
 
@@ -231,8 +231,8 @@ export function Navbar() {
               ))}
             </ul>
             <div className="mt-6 flex flex-col gap-3 pb-8">
-              <Button href="/help/" size="lg" className="w-full">
-                Get Started
+              <Button href="/free-trial/" size="lg" className="w-full">
+                Book Your Free Trial
               </Button>
               <Button href="/#download" variant="secondary" size="lg" className="w-full">
                 Download App

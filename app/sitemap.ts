@@ -6,6 +6,7 @@ export const dynamic = 'force-static';
 
 const routes = [
   { path: '/', priority: 1, changeFrequency: 'weekly' as const },
+  { path: '/free-trial/', priority: 0.9, changeFrequency: 'monthly' as const },
   { path: '/features/', priority: 0.9, changeFrequency: 'monthly' as const },
   { path: '/how-it-works/', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/pricing/', priority: 0.9, changeFrequency: 'monthly' as const },

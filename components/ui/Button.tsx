@@ -5,7 +5,7 @@ type Variant = 'primary' | 'secondary' | 'ghost' | 'inverse' | 'danger';
 type Size = 'sm' | 'md' | 'lg';
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-colors duration-150 ' +
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl font-semibold transition-colors duration-150 ' +
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 ' +
   'disabled:cursor-not-allowed disabled:opacity-50';
 

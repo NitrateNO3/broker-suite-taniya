@@ -19,8 +19,8 @@ export function CTA() {
               Bring your properties, leads, clients and team together with BrokrSuite.
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-              <Button href="/help/" size="lg" variant="inverse" data-analytics="get-started-click">
-                Get Started
+              <Button href="/free-trial/" size="lg" variant="inverse" data-analytics="free-trial-click">
+                Book Your Free Trial
               </Button>
               <Button
                 href="/#download"

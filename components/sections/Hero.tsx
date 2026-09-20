@@ -74,8 +74,8 @@ export function Hero() {
               className="mt-9 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start motion-safe:animate-fade-up"
               style={{ animationDelay: '120ms' }}
             >
-              <Button href="/help/" size="lg" className="sm:w-auto" data-analytics="get-started-click">
-                Get Started
+              <Button href="/free-trial/" size="lg" className="sm:w-auto" data-analytics="free-trial-click">
+                Book Your Free Trial
               </Button>
               <Button href="/how-it-works/" size="lg" variant="secondary" className="sm:w-auto">
                 See how it works

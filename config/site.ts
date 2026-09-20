@@ -24,6 +24,9 @@ export const site = {
 /** Legal entity, exactly as the app's About and Privacy screens state it. */
 export const legalEntity = 'QuenchMark';
 
+/** Where free-trial enquiries are sent — separate from the support address. */
+export const trialInbox = 'brokrsuiteofficial@gmail.com';
+
 export const contact: { email: string; phone: string; address: string } = {
   email: 'support@brokrsuite.in',
   phone: '',           // e.g. '+91 98765 43210' — hidden while empty
@@ -265,7 +268,7 @@ export const pricing = {
       featured: false,
       limits: { users: '1 user', properties: 'Property limit — TBC', leads: 'Lead limit — TBC', support: 'Email support' },
       features: ['Property management', 'Lead management', 'Client management', 'Follow-up reminders', 'Mobile app access'],
-      cta: { label: 'Get Started', href: '/help/' },
+      cta: { label: 'Book Your Free Trial', href: '/free-trial/' },
     },
     {
       id: 'professional',
@@ -282,7 +285,7 @@ export const pricing = {
         'Property assignment',
         'Dashboard & analytics',
       ],
-      cta: { label: 'Get Started', href: '/help/' },
+      cta: { label: 'Book Your Free Trial', href: '/free-trial/' },
     },
     {
       id: 'business',
@@ -299,7 +302,7 @@ export const pricing = {
         'Sales pipeline reporting',
         'Onboarding assistance',
       ],
-      cta: { label: 'Contact Sales', href: '/help/' },
+      cta: { label: 'Contact Sales', href: '/free-trial/' },
     },
   ] satisfies Plan[],
 };
