@@ -41,6 +41,31 @@ export function FreeTrialForm() {
     )}&body=${encodeURIComponent(body)}`;
   }
 
+  /**
+   * Relay from the browser rather than the server: FormSubmit answers 403 to
+   * Vercel's serverless IPs, but accepts the visitor's own request. The
+   * endpoint can be swapped for FormSubmit's alias id via
+   * NEXT_PUBLIC_FORMSUBMIT_ID so the inbox address stays out of the bundle.
+   */
+  async function relayFromBrowser(values: Record<string, string>) {
+    const target = process.env.NEXT_PUBLIC_FORMSUBMIT_ID || trialInbox;
+    const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(target)}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        _subject: `Free trial request — ${values.firstName} ${values.lastName} (${values.company})`,
+        _captcha: 'false',
+        _template: 'table',
+        Name: `${values.firstName} ${values.lastName}`,
+        Email: values.email,
+        Phone: values.phone,
+        Company: values.company,
+      }),
+    });
+    const body = (await res.json().catch(() => ({}))) as { success?: string };
+    return res.ok && body.success === 'true';
+  }
+
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
@@ -68,11 +93,22 @@ export function FreeTrialForm() {
       }
       const payload = (await res.json().catch(() => ({}))) as { error?: string };
       if (payload.error === 'not-configured' || payload.error === 'delivery-failed') {
+        // No mail provider set: try relaying from here before giving up.
+        if (await relayFromBrowser(values).catch(() => false)) {
+          setStatus({ kind: 'sent' });
+          form.reset();
+          return;
+        }
         setStatus({ kind: 'fallback', mailto: buildMailto(values) });
         return;
       }
       setStatus({ kind: 'error', message: payload.error || 'Something went wrong. Please try again.' });
     } catch {
+      if (await relayFromBrowser(values).catch(() => false)) {
+        setStatus({ kind: 'sent' });
+        form.reset();
+        return;
+      }
       setStatus({ kind: 'fallback', mailto: buildMailto(values) });
     }
   }
