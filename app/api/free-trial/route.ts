@@ -11,6 +11,7 @@ export const runtime = 'nodejs';
  * used to send arbitrary mail to arbitrary addresses.
  *
  * Delivery is configured with ONE of:
+ *   WEB3FORMS_ACCESS_KEY                         — sends via Web3Forms
  *   RESEND_API_KEY (+ optional TRIAL_MAIL_FROM)  — sends via Resend
  *   TRIAL_WEBHOOK                                — POSTs the JSON onward
  *
@@ -56,10 +57,35 @@ export async function POST(request: Request) {
   ].join('\n');
   const subject = `Free trial request — ${firstName} ${lastName} (${company})`;
 
+  const web3Key = process.env.WEB3FORMS_ACCESS_KEY;
   const resendKey = process.env.RESEND_API_KEY;
   const webhook = process.env.TRIAL_WEBHOOK;
 
   try {
+    // Preferred: no origin restrictions and no datacenter blocking, so unlike
+    // the browser relay this works from the server on any domain.
+    if (web3Key) {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: web3Key,
+          subject,
+          from_name: site.name,
+          replyto: email,
+          Name: `${firstName} ${lastName}`,
+          Email: email,
+          Phone: phone,
+          Company: company,
+          Received: receivedAt,
+        }),
+      });
+      const out = (await res.json().catch(() => ({}))) as { success?: boolean; message?: string };
+      if (res.ok && out.success) return NextResponse.json({ ok: true });
+      console.error('Web3Forms rejected the enquiry:', res.status, out.message);
+      return NextResponse.json({ error: 'delivery-failed' }, { status: 502 });
+    }
+
     if (resendKey) {
       const res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
