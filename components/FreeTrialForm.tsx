@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import { Button } from '@/components/ui/Button';
-import { trialInbox } from '@/config/site';
+import { trialInbox, web3formsKey } from '@/config/site';
 
 type Status =
   | { kind: 'idle' }
@@ -42,12 +42,35 @@ export function FreeTrialForm() {
   }
 
   /**
-   * Relay from the browser rather than the server: FormSubmit answers 403 to
-   * Vercel's serverless IPs, but accepts the visitor's own request. The
-   * endpoint can be swapped for FormSubmit's alias id via
-   * NEXT_PUBLIC_FORMSUBMIT_ID so the inbox address stays out of the bundle.
+   * Both relays run here rather than on the server: Web3Forms permits
+   * server-side calls only on its paid plan, and FormSubmit answers 403 to
+   * Vercel's IPs. From the visitor's own browser both are accepted.
+   *
+   * Web3Forms is tried first because it works on any domain. FormSubmit is the
+   * backstop, but it scopes activation per origin, so it only delivers from
+   * origins that inbox has activated.
    */
+  async function relayViaWeb3Forms(values: Record<string, string>) {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: web3formsKey,
+        subject: `Free trial request — ${values.firstName} ${values.lastName} (${values.company})`,
+        from_name: 'BrokrSuite website',
+        replyto: values.email,
+        Name: `${values.firstName} ${values.lastName}`,
+        Email: values.email,
+        Phone: values.phone,
+        Company: values.company,
+      }),
+    });
+    const body = (await res.json().catch(() => ({}))) as { success?: boolean };
+    return res.ok && Boolean(body.success);
+  }
+
   async function relayFromBrowser(values: Record<string, string>) {
+    if (await relayViaWeb3Forms(values).catch(() => false)) return true;
     const target = process.env.NEXT_PUBLIC_FORMSUBMIT_ID || trialInbox;
     const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(target)}`, {
       method: 'POST',

@@ -27,6 +27,14 @@ export const legalEntity = 'QuenchMark';
 /** Where free-trial enquiries are sent — separate from the support address. */
 export const trialInbox = 'brokrsuiteofficial@gmail.com';
 
+/**
+ * Web3Forms access key. Public by design — it ships in the client bundle on
+ * every site that uses Web3Forms, so this is an identifier, not a secret.
+ * Set NEXT_PUBLIC_WEB3FORMS_KEY to override it without a code change.
+ */
+export const web3formsKey =
+  process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '4cfe3668-2764-4bdc-9c04-e9a8e0d54076';
+
 export const contact: { email: string; phone: string; address: string } = {
   email: 'support@brokrsuite.in',
   phone: '',           // e.g. '+91 98765 43210' — hidden while empty
