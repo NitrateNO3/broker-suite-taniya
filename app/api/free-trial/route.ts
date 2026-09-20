@@ -118,7 +118,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true });
     }
     console.error('FormSubmit did not accept the enquiry:', relay.status, result.message);
-    return NextResponse.json({ error: 'delivery-failed' }, { status: 502 });
+    return NextResponse.json(
+      { error: 'delivery-failed', relayStatus: relay.status, relayMessage: result.message ?? null },
+      { status: 502 },
+    );
   } catch (error) {
     console.error('Could not deliver the trial enquiry:', error);
     return NextResponse.json({ error: 'delivery-failed' }, { status: 502 });
