@@ -18,7 +18,7 @@ const credits: Credit[] = [
     tone: 'dark',
   },
   {
-    label: 'Developed by',
+    label: 'Product of',
     name: 'QuenchMark',
     href: 'https://quenchmark.org/',
     src: '/quenchmark.png',
