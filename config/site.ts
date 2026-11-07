@@ -17,7 +17,7 @@ export const site = {
   shortDescription: 'A smarter way to manage your real estate business.',
   // Update to the production domain before deploying — used for canonical URLs,
   // Open Graph tags and sitemap.xml.
-  url: 'https://brokrsuite.in',
+  url: 'https://www.brokrsuite.in',
   locale: 'en_IN',
 } as const;
 
