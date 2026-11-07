@@ -31,12 +31,12 @@ export function Footer() {
             <StoreButtons tone="dark" className="mt-6" />
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-9">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-9 lg:grid-cols-5">
             {footerNav.map((group) => (
               <div key={group.heading}>
-                <h2 className="text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-white">
+                <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-white">
                   {group.heading}
-                </h2>
+                </p>
                 <ul className="mt-4 space-y-3">
                   {group.links.map((link) => (
                     <li key={link.href}>
@@ -57,7 +57,7 @@ export function Footer() {
             ))}
 
             <div>
-              <h2 className="text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-white">Contact</h2>
+              <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-white">Contact</p>
               <ul className="mt-4 space-y-3 text-sm text-ink-400">
                 <li>
                   <a
@@ -82,9 +82,9 @@ export function Footer() {
 
               {socials.length > 0 && (
                 <>
-                  <h2 className="mt-8 text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-white">
+                  <p className="mt-8 text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-white">
                     Social
-                  </h2>
+                  </p>
                   <ul className="mt-4 space-y-3">
                     {socials.map((s) => (
                       <li key={s.key}>
@@ -108,7 +108,7 @@ export function Footer() {
         {/* Legal links already sit in the Resources column above, so the
             bottom bar carries the copyright only. */}
         <div className="mt-12 flex flex-col-reverse items-start gap-6 border-t border-ink-800 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-ink-500">
+          <p className="text-sm text-ink-400">
             © {year} {site.name}. All rights reserved.
           </p>
           <SiteCredits />

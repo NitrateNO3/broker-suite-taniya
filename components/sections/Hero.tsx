@@ -2,14 +2,14 @@ import { LogoMark } from '@/components/Logo';
 import { PhoneShowcase } from '@/components/mockups/PhoneShowcase';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Section';
+import { demoCta } from '@/config/site';
 
-/* Verbatim from the app's own About screen — nothing here is a claim the
-   product does not already make about itself. */
+/* Only capabilities verified in the shipped app and its store listings. */
 const assurances = [
-  'Isolated multi-tenant workspaces',
-  'Direct WhatsApp inquiries',
-  'Watermarked property media',
-  'Role-based access control',
+  'iPhone and Android apps',
+  'Property inventory and listings',
+  'Leads, clients and follow-ups',
+  'Team activity and analytics',
 ];
 
 export function Hero() {
@@ -56,26 +56,26 @@ export function Hero() {
       <Container className="relative py-14 sm:py-16">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-8">
           <div className="text-center lg:col-span-6 lg:col-start-1 lg:row-start-1 lg:text-left">
-            <h1 className="text-display-lg font-bold text-ink-950 motion-safe:animate-fade-up">
-              Your complete real estate business,{' '}
-              {/* Its own line: balancing the whole heading strands "in" instead. */}
-              <span className="block text-brand-600">in one suite.</span>
+            {/* Transform-only entrance on the heading, intro and product shot: an
+                element painted at opacity 0 is not counted for LCP. */}
+            <h1 className="text-display-lg font-bold text-ink-950 motion-safe:animate-rise">
+              Real estate CRM software{' '}
+              <span className="block text-brand-600">for brokers and agencies.</span>
             </h1>
 
             <p
-              className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-ink-500 sm:text-lg lg:mx-0 motion-safe:animate-fade-up"
-              style={{ animationDelay: '60ms' }}
+              className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-ink-500 sm:text-lg lg:mx-0 motion-safe:animate-rise"
             >
-              Manage properties, leads, clients, follow-ups and your entire real estate workflow from one
-              powerful platform.
+              Your complete real estate business, in one suite. Manage property inventory, leads, clients,
+              follow-ups and your team from one app.
             </p>
 
             <div
               className="mt-9 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start motion-safe:animate-fade-up"
               style={{ animationDelay: '120ms' }}
             >
-              <Button href="/free-trial/" size="lg" className="sm:w-auto" data-analytics="free-trial-click">
-                Book Your Free Trial
+              <Button href={demoCta.href} size="lg" className="sm:w-auto" data-analytics="demo-request">
+                {demoCta.label}
               </Button>
               <Button href="/how-it-works/" size="lg" variant="secondary" className="sm:w-auto">
                 See how it works
@@ -84,8 +84,7 @@ export function Hero() {
           </div>
 
           <div
-            className="order-2 lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 motion-safe:animate-fade-up"
-            style={{ animationDelay: '150ms' }}
+            className="order-2 lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 motion-safe:animate-rise"
           >
             <PhoneShowcase />
           </div>

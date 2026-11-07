@@ -3,23 +3,26 @@ import { pageMetadata } from '@/lib/seo';
 import { PageHeader } from '@/components/PageHeader';
 import { CTA } from '@/components/sections/CTA';
 import { Container, Section } from '@/components/ui/Section';
+import Link from 'next/link';
 import { contact, legalEntity, site } from '@/config/site';
+import { solutionLinks } from '@/config/nav';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'About',
-  description: `${site.name} is an enterprise real estate brokerage and CRM platform for brokerages, agents and property seekers.`,
+  title: 'About BrokrSuite',
+  description: `${site.name} is a real estate CRM app by ${legalEntity} for brokers, agents, property dealers and agencies, available on iPhone and Android.`,
   path: '/about/',
 });
 
-/* Mission, differentiators and company details are taken from the app's own
-   About screen, so the site never describes the product differently. */
+/* Only verified product facts: the six core modules, the two app stores and
+   the publisher. Claims the app has not been verified to support are left out. */
 export default function AboutPage() {
   return (
     <>
       <PageHeader
         eyebrow="About"
         title={`About ${site.name}`}
-        body="Enterprise Real Estate Brokerage & CRM Platform."
+        body="Real estate CRM software for brokers, agents and agencies."
+        breadcrumbs={[{ name: 'About', path: '/about/' }]}
       />
 
       <Section compactTop>
@@ -29,18 +32,35 @@ export default function AboutPage() {
               <div className="legal-prose">
                 <h2>Our Mission</h2>
                 <p>
-                  {site.name} is engineered to empower modern real estate brokerages, agents, and property
-                  seekers with seamless multi-tenant workspaces, high-speed verified listings, instant
-                  WhatsApp inquiries, and bank-grade data security.
+                  Most brokers are not short of deals — they are short of a single place to keep track of them.
+                  {' '}{site.name} exists to give real estate brokers, agents, property dealers and agencies one
+                  system for the properties they offer and the people looking for one, instead of spreadsheets,
+                  notebooks and chat threads.
                 </p>
 
-                <h2>Why Choose {site.name}?</h2>
+                <h2>What {site.name} does</h2>
                 <ul>
-                  <li>Isolated Multi-Tenant Workspaces for Brokerages</li>
-                  <li>Dynamic Watermarking &amp; Protected Property Media</li>
-                  <li>Direct WhatsApp Lead Pipeline &amp; Follow-up Tracker</li>
-                  <li>Verified Property Exploration with Rich Filters</li>
-                  <li>Comprehensive Employee, Agent &amp; Attendance Management</li>
+                  <li>Property inventory management — listings with photos, details and status</li>
+                  <li>Lead management — source, status, assigned agent, notes and history</li>
+                  <li>Client management — requirements, budget, preferred locations and history</li>
+                  <li>Follow-up management — reminders, upcoming and completed follow-ups</li>
+                  <li>Team management — add members and assign leads and properties</li>
+                  <li>Business analytics — leads, deals, follow-ups and team performance</li>
+                </ul>
+                <p>
+                  {site.name} is a mobile app, available on the App Store for iPhone and on Google Play for
+                  Android.
+                </p>
+
+                <h2>Who it is for</h2>
+                <ul>
+                  {solutionLinks
+                    .filter((link) => link.href !== '/real-estate-crm-app/')
+                    .map((link) => (
+                      <li key={link.href}>
+                        <Link href={link.href}>{link.label}</Link>
+                      </li>
+                    ))}
                 </ul>
 
                 <h2>Company &amp; Support</h2>
@@ -62,8 +82,8 @@ export default function AboutPage() {
                 <h2 className="text-base font-semibold text-ink-950">At a glance</h2>
                 <dl className="mt-5 divide-y divide-ink-200 text-sm">
                   {[
-                    ['Product', 'Enterprise Real Estate Brokerage & CRM Platform'],
-                    ['Version', 'v1.0.0 (Build 1)'],
+                    ['Product', 'Real estate CRM app'],
+                    ['Platforms', 'iPhone and Android'],
                     ['Company', legalEntity],
                     ['Support', contact.email],
                   ].map(([term, value]) => (

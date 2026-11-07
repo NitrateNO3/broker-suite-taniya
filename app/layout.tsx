@@ -2,7 +2,9 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { JsonLd } from '@/components/JsonLd';
 import { site } from '@/config/site';
+import { organizationSchema, websiteSchema } from '@/lib/schema';
 import './globals.css';
 
 const inter = Inter({
@@ -14,40 +16,29 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Real Estate CRM & Property Management Software`,
+    default: `Real Estate CRM Software for Brokers & Agencies | ${site.name}`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
   applicationName: site.name,
-  keywords: [
-    'real estate CRM',
-    'property management software',
-    'broker CRM',
-    'lead management',
-    'real estate software',
-    'property inventory',
-  ],
-  alternates: { canonical: '/' },
+  // No canonical here: a root-level canonical would be inherited by any page
+  // that forgets its own. Every page sets one through lib/seo.ts.
   openGraph: {
     type: 'website',
     siteName: site.name,
     locale: site.locale,
     url: site.url,
-    title: `${site.name} — Real Estate CRM & Property Management Software`,
+    title: `Real Estate CRM Software for Brokers & Agencies | ${site.name}`,
     description: site.description,
     images: [{ url: '/og.png', width: 1200, height: 630, alt: `${site.name} — Real Estate CRM` }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${site.name} — Real Estate CRM & Property Management Software`,
+    title: `Real Estate CRM Software for Brokers & Agencies | ${site.name}`,
     description: site.description,
     images: ['/og.png'],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
-  },
+  // Indexing is the default; leaving robots unset lets not-found emit a lone noindex.
   icons: {
     icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
     apple: [{ url: '/apple-icon.png', sizes: '180x180' }],
@@ -59,16 +50,6 @@ export const viewport: Viewport = {
   themeColor: '#4F46E5',
   width: 'device-width',
   initialScale: 1,
-};
-
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: site.name,
-  applicationCategory: 'BusinessApplication',
-  operatingSystem: 'Android, iOS',
-  description: site.description,
-  url: site.url,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -86,10 +67,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={websiteSchema} />
       </body>
     </html>
   );

@@ -8,9 +8,9 @@ import { Container } from '@/components/ui/Section';
 import { features } from '@/config/site';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Features',
+  title: 'Real Estate CRM Features',
   description:
-    'Property management, lead management, client records, follow-up reminders, team management and business analytics — every BrokrSuite feature in detail.',
+    'Every BrokrSuite feature in detail: property inventory, leads, clients, follow-up reminders, team management and business analytics in one real estate CRM app.',
   path: '/features/',
 });
 
@@ -19,8 +19,9 @@ export default function FeaturesPage() {
     <>
       <PageHeader
         eyebrow="Features"
-        title="Everything BrokrSuite does"
+        title="Every feature in the BrokrSuite real estate CRM"
         body="Six modules that cover the full lifecycle of a real estate deal — from the moment a property is listed to the moment it closes."
+        breadcrumbs={[{ name: 'Features', path: '/features/' }]}
       />
 
       {/* Jump list — keeps a long page navigable */}

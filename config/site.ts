@@ -13,13 +13,20 @@ export const site = {
   name: 'BrokrSuite',
   tagline: 'Real Estate CRM',
   description:
-    'Manage properties, leads, clients and your real estate business with BrokrSuite — a modern CRM platform built for real estate professionals.',
+    'BrokrSuite is real estate CRM software for brokers, agents and agencies. Manage property inventory, leads, clients, follow-ups and your team from one app.',
   shortDescription: 'A smarter way to manage your real estate business.',
-  // Update to the production domain before deploying — used for canonical URLs,
-  // Open Graph tags and sitemap.xml.
+  // Canonical host — the apex 308-redirects here in Vercel. Drives canonical
+  // URLs, Open Graph tags, structured data and sitemap.xml.
   url: 'https://www.brokrsuite.in',
-  locale: 'en_IN',
+  // Global, English-first audience.
+  locale: 'en_US',
 } as const;
+
+/**
+ * The site's primary call to action. A free trial is not advertised until the
+ * offer is confirmed, so every conversion button points at a demo request.
+ */
+export const demoCta = { label: 'Book a Demo', href: '/book-a-demo/' } as const;
 
 /** Legal entity, exactly as the app's About and Privacy screens state it. */
 export const legalEntity = 'QuenchMark';
@@ -71,15 +78,15 @@ export const contactEndpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? '';
 /* Value propositions — PRD §6                                         */
 /* ------------------------------------------------------------------ */
 
-export type ValueProp = { icon: IconName; title: string; body: string };
+export type ValueProp = { icon: IconName; title: string; body: string; href?: string };
 
 export const valueProps: ValueProp[] = [
-  { icon: 'building', title: 'Property Management', body: 'Manage your entire property inventory from one place.' },
-  { icon: 'target', title: 'Lead Management', body: 'Capture, organize and manage your leads efficiently.' },
+  { icon: 'building', title: 'Property Management', body: 'Manage your entire property inventory from one place.', href: '/property-inventory-management/' },
+  { icon: 'target', title: 'Lead Management', body: 'Capture, organize and manage your leads efficiently.', href: '/real-estate-lead-management/' },
   { icon: 'users', title: 'Client Management', body: 'Keep client information and interactions organized.' },
   { icon: 'bell', title: 'Follow-Ups', body: 'Never miss an important client follow-up.' },
-  { icon: 'team', title: 'Team Management', body: 'Manage agents and sales teams efficiently.' },
-  { icon: 'chart', title: 'Business Analytics', body: 'Track your business performance and sales activity.' },
+  { icon: 'team', title: 'Team Management', body: 'Manage agents and sales teams efficiently.', href: '/real-estate-agency-software/' },
+  { icon: 'chart', title: 'Business Analytics', body: 'Track your business performance and sales activity.', href: '/real-estate-sales-management/' },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -112,6 +119,8 @@ export type Feature = {
    * borrowing an unrelated screen or a drawn stand-in.
    */
   screen?: AppScreenKey;
+  /** The landing page that covers this feature in depth. */
+  page?: { href: string; label: string };
 };
 
 export const features: Feature[] = [
@@ -128,6 +137,7 @@ export const features: Feature[] = [
       'Categorize properties',
       'Search and filter properties',
     ],
+    page: { href: '/property-inventory-management/', label: 'Property inventory management' },
     icon: 'building',
     screen: 'explore',
   },
@@ -144,6 +154,7 @@ export const features: Feature[] = [
       'Notes on every lead',
       'Complete lead history',
     ],
+    page: { href: '/real-estate-lead-management/', label: 'Real estate lead management' },
     icon: 'target',
   },
   {
@@ -186,6 +197,7 @@ export const features: Feature[] = [
       'Track team activity',
       'Monitor performance',
     ],
+    page: { href: '/real-estate-agency-software/', label: 'Software for real estate agencies' },
     icon: 'team',
   },
   {
@@ -201,6 +213,7 @@ export const features: Feature[] = [
       'Team performance',
       'Sales pipeline',
     ],
+    page: { href: '/real-estate-sales-management/', label: 'Real estate sales management' },
     icon: 'chart',
     screen: 'dashboard',
   },
@@ -213,21 +226,25 @@ export const features: Feature[] = [
 export const solutions = [
   {
     title: 'For Individual Brokers',
+    href: '/real-estate-broker-crm/',
     body: 'Manage properties, leads and clients without complicated software.',
     icon: 'user' as IconName,
   },
   {
     title: 'For Real Estate Agencies',
+    href: '/real-estate-agency-software/',
     body: "Centralize your team's operations and improve productivity.",
     icon: 'building' as IconName,
   },
   {
     title: 'For Sales Teams',
+    href: '/real-estate-sales-management/',
     body: 'Track leads, assignments, follow-ups and conversions.',
     icon: 'team' as IconName,
   },
   {
     title: 'For Property Businesses',
+    href: '/property-inventory-management/',
     body: 'Maintain your property inventory and customer pipeline in one place.',
     icon: 'briefcase' as IconName,
   },
@@ -239,7 +256,7 @@ export const solutions = [
 
 export const steps = [
   { title: 'Create Your Account', body: 'Sign up and set up your business.' },
-  { title: 'Add Your Properties & Leads', body: 'Import or add your property and customer information.' },
+  { title: 'Add Your Properties & Leads', body: 'Add your properties, leads and client details.' },
   { title: 'Manage Your Business', body: 'Track leads, clients, properties and follow-ups.' },
   { title: 'Close More Deals', body: 'Use organized data and follow-ups to improve your sales process.' },
 ];
@@ -276,7 +293,7 @@ export const pricing = {
       featured: false,
       limits: { users: '1 user', properties: 'Property limit — TBC', leads: 'Lead limit — TBC', support: 'Email support' },
       features: ['Property management', 'Lead management', 'Client management', 'Follow-up reminders', 'Mobile app access'],
-      cta: { label: 'Book Your Free Trial', href: '/free-trial/' },
+      cta: { label: 'Book a Demo', href: '/book-a-demo/' },
     },
     {
       id: 'professional',
@@ -293,7 +310,7 @@ export const pricing = {
         'Property assignment',
         'Dashboard & analytics',
       ],
-      cta: { label: 'Book Your Free Trial', href: '/free-trial/' },
+      cta: { label: 'Book a Demo', href: '/book-a-demo/' },
     },
     {
       id: 'business',
@@ -310,7 +327,7 @@ export const pricing = {
         'Sales pipeline reporting',
         'Onboarding assistance',
       ],
-      cta: { label: 'Contact Sales', href: '/free-trial/' },
+      cta: { label: 'Contact Sales', href: '/book-a-demo/' },
     },
   ] satisfies Plan[],
 };
@@ -350,10 +367,41 @@ export const testimonials = {
 };
 
 /* ------------------------------------------------------------------ */
-/* FAQ — PRD §15                                                       */
+/* FAQs                                                                */
 /* ------------------------------------------------------------------ */
 
-export const faqs = [
+export type Faq = { q: string; a: string };
+
+/** Questions someone evaluating BrokrSuite asks — the homepage FAQ. */
+export const buyerFaqs: Faq[] = [
+  {
+    q: 'What is BrokrSuite?',
+    a: 'BrokrSuite is real estate CRM software from QuenchMark. It brings your property inventory, leads, clients, follow-ups, team activity and business analytics into one app, so your listings and your sales pipeline live in the same place.',
+  },
+  {
+    q: 'Who is BrokrSuite for?',
+    a: 'Individual brokers and property dealers, real estate agents, agencies running several agents, and sales teams that need to see every lead and follow-up in one place.',
+  },
+  {
+    q: 'Which devices does BrokrSuite run on?',
+    a: 'BrokrSuite is a mobile app, available on the App Store for iPhone and on Google Play for Android.',
+  },
+  {
+    q: 'Can I manage my team in BrokrSuite?',
+    a: 'Yes. You can add team members, assign leads and properties to them, and track team activity and performance from the dashboard.',
+  },
+  {
+    q: 'How much does BrokrSuite cost?',
+    a: 'Pricing is being finalized. There are plans for individual brokers, growing real estate businesses and larger agencies — book a demo and we will take you through the current options.',
+  },
+  {
+    q: 'How do I get started?',
+    a: 'Download the app from the App Store or Google Play, or book a demo and we will walk you through BrokrSuite with your own business in mind.',
+  },
+];
+
+/** In-app support answers — mirrors the app's Help & Support screen. */
+export const supportFaqs: Faq[] = [
   {
     q: 'How do I contact a property agent?',
     a: 'On any property details page, tap the WhatsApp Inquiry button to open a direct chat with the assigned verified agent with prefilled property details.',

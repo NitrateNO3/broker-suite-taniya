@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { Button } from '@/components/ui/Button';
 import { Container, Section, SectionHeading } from '@/components/ui/Section';
@@ -22,6 +23,17 @@ export function ValueProps() {
                 </span>
                 <h3 className="mt-5 text-base font-semibold text-ink-950">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-500">{item.body}</p>
+                {item.href && (
+                  <Link
+                    href={item.href}
+                    className="mt-4 inline-flex items-center gap-1.5 rounded text-sm font-medium text-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                  >
+                    Learn more<span className="sr-only"> about {item.title.toLowerCase()}</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5" aria-hidden="true">
+                      <path d="M5 12h13M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Link>
+                )}
               </div>
             </Reveal>
           ))}

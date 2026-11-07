@@ -20,7 +20,7 @@ export function Problem() {
               them. BrokrSuite brings your properties, leads, clients and follow-ups into one system your
               whole team works from.
             </p>
-            <Button href="/features/" className="mt-8 h-12 text-left sm:whitespace-nowrap">
+            <Button href="/features/" className="mt-8 h-12 text-left max-sm:!h-auto max-sm:!whitespace-normal max-sm:py-3">
               Move your real estate business to one platform
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4" aria-hidden="true">
                 <path d="M5 12h13M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />

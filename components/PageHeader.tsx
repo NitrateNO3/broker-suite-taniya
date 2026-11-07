@@ -1,5 +1,10 @@
 import type { ReactNode } from 'react';
+import Link from 'next/link';
+import { JsonLd } from '@/components/JsonLd';
 import { Container } from '@/components/ui/Section';
+import { breadcrumbSchema } from '@/lib/schema';
+
+export type Crumb = { name: string; path: string };
 
 /** Consistent page-level header for every non-home page. */
 export function PageHeader({
@@ -7,6 +12,8 @@ export function PageHeader({
   title,
   body,
   children,
+  /** Trail below Home, ending with this page. Renders visibly and as BreadcrumbList. */
+  breadcrumbs,
   /** 'danger' tints the header red, for destructive pages. */
   tone = 'brand',
   /** Tighter padding and a smaller title, for pages that are mostly a form. */
@@ -16,6 +23,7 @@ export function PageHeader({
   title: string;
   body?: ReactNode;
   children?: ReactNode;
+  breadcrumbs?: Crumb[];
   tone?: 'brand' | 'danger';
   compact?: boolean;
 }) {
@@ -32,6 +40,27 @@ export function PageHeader({
       />
       <Container className={`relative ${compact ? 'py-6 sm:py-8' : 'py-14 sm:py-16 lg:py-20'}`}>
         <div className="max-w-3xl">
+          {breadcrumbs && (
+            <nav aria-label="Breadcrumb" className="mb-5">
+              <ol className="flex flex-wrap items-center gap-1.5 text-xs text-ink-500">
+                {[{ name: 'Home', path: '/' }, ...breadcrumbs].map((crumb, i, all) => (
+                  <li key={crumb.path} className="flex items-center gap-1.5">
+                    {i > 0 && <span aria-hidden="true">/</span>}
+                    {i === all.length - 1 ? (
+                      <span aria-current="page" className="text-ink-700">
+                        {crumb.name}
+                      </span>
+                    ) : (
+                      <Link href={crumb.path} className="rounded hover:text-ink-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
+                        {crumb.name}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ol>
+              <JsonLd data={breadcrumbSchema(breadcrumbs)} />
+            </nav>
+          )}
           {eyebrow && (
             <p
               className={`mb-3 text-xs font-semibold uppercase tracking-[0.14em] ${

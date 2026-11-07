@@ -14,7 +14,7 @@ function PlanCard({ plan, showPrice }: { plan: Plan; showPrice: boolean }) {
     >
       {plan.featured && (
         <span className="absolute -top-3 left-6 rounded-full bg-brand-600 px-3 py-1 text-[0.6875rem] font-semibold uppercase tracking-wide text-white">
-          Most popular
+          Recommended
         </span>
       )}
 

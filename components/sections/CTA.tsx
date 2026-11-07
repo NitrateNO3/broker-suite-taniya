@@ -1,6 +1,7 @@
 import { StoreButtons } from '@/components/StoreButtons';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Section';
+import { demoCta } from '@/config/site';
 
 export function CTA() {
   return (
@@ -19,8 +20,8 @@ export function CTA() {
               Bring your properties, leads, clients and team together with BrokrSuite.
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-              <Button href="/free-trial/" size="lg" variant="inverse" data-analytics="free-trial-click">
-                Book Your Free Trial
+              <Button href={demoCta.href} size="lg" variant="inverse" data-analytics="demo-request">
+                {demoCta.label}
               </Button>
               <Button
                 href="/#download"

@@ -6,9 +6,9 @@ import { CTA } from '@/components/sections/CTA';
 import { Container, Section, SectionHeading } from '@/components/ui/Section';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Pricing',
+  title: 'Real Estate CRM Pricing',
   description:
-    'BrokrSuite pricing plans for individual brokers, growing real estate businesses and agencies. Contact us for current plans.',
+    'BrokrSuite real estate CRM plans for individual brokers, growing real estate businesses and agencies. Pricing is being finalized — book a demo for current plans.',
   path: '/pricing/',
 });
 
@@ -38,6 +38,7 @@ export default function PricingPage() {
         eyebrow="Pricing"
         title="Simple plans for every size of real estate business"
         body="Start on your own, or roll BrokrSuite out across a full agency. Pricing is being finalized — get in touch and we will walk you through the current plans."
+        breadcrumbs={[{ name: 'Pricing', path: '/pricing/' }]}
       />
 
       <Pricing tone="default" compactTop />

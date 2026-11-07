@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
+import { JsonLd } from '@/components/JsonLd';
 import { Hero } from '@/components/sections/Hero';
 import { ValueProps } from '@/components/sections/ValueProps';
 import { Problem } from '@/components/sections/Problem';
@@ -10,24 +11,17 @@ import { Testimonials } from '@/components/sections/Testimonials';
 import { Pricing } from '@/components/sections/Pricing';
 import { FAQ } from '@/components/sections/FAQ';
 import { CTA } from '@/components/sections/CTA';
-import { faqs, site } from '@/config/site';
+import { buyerFaqs, site } from '@/config/site';
+import { softwareApplicationSchema } from '@/lib/schema';
+
+const title = `Real Estate CRM Software for Brokers & Agencies | ${site.name}`;
 
 export const metadata: Metadata = pageMetadata({
-  title: `${site.name} — Real Estate CRM & Property Management Software`,
+  title: { absolute: title },
   description: site.description,
   path: '/',
-  ogTitle: `${site.name} — Real Estate CRM & Property Management Software`,
+  ogTitle: title,
 });
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.q,
-    acceptedAnswer: { '@type': 'Answer', text: faq.a },
-  })),
-};
 
 export default function HomePage() {
   return (
@@ -40,9 +34,9 @@ export default function HomePage() {
       <AppShowcase />
       <Testimonials />
       <Pricing />
-      <FAQ />
+      <FAQ items={buyerFaqs} body="What brokers and agencies usually ask before getting started." />
       <CTA />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <JsonLd data={softwareApplicationSchema} />
     </>
   );
 }

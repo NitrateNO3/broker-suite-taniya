@@ -69,6 +69,12 @@ const config: Config = {
           from: { opacity: '0', transform: 'translateY(12px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
+        /* Same entrance without the fade, for above-the-fold content that is a
+           Largest Contentful Paint candidate. */
+        rise: {
+          from: { transform: 'translateY(12px)' },
+          to: { transform: 'translateY(0)' },
+        },
         /* Slow, large-radius movement for the hero's background washes. At
            this speed it reads as depth rather than as something animating. */
         drift: {
@@ -82,6 +88,7 @@ const config: Config = {
       },
       animation: {
         'fade-up': 'fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both',
+        rise: 'rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both',
         drift: 'drift 16s ease-in-out infinite',
         'drift-slow': 'drift 24s ease-in-out infinite reverse',
         bob: 'bob 2.2s ease-in-out infinite',
