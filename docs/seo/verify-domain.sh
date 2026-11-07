@@ -34,9 +34,14 @@ done
 check https://brokrsuite.in/features/ 308 "$WWW/features/"
 
 echo '== Public pages on www must return 200'
-for p in / /features/ /how-it-works/ /pricing/ /free-trial/ /about/ /help/ /privacy/ /delete-account/ /robots.txt /sitemap.xml; do
+for p in / /features/ /how-it-works/ /pricing/ /book-a-demo/ /about/ /help/ /privacy/ /delete-account/ /blog/ \
+  /real-estate-broker-crm/ /real-estate-lead-management/ /property-inventory-management/ \
+  /real-estate-agency-software/ /real-estate-sales-management/ /real-estate-crm-app/ /robots.txt /sitemap.xml; do
   check "$WWW$p" 200
 done
+
+echo '== Retired trial page must 308 to the demo page'
+check "$WWW/free-trial/" 308 "$WWW/book-a-demo/"
 
 echo '== Unknown URL must return 404'
 check "$WWW/this-page-does-not-exist/" 404
