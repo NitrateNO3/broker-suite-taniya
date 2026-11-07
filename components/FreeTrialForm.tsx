@@ -34,10 +34,10 @@ export function FreeTrialForm() {
       `Phone: ${v.phone}`,
       `Company: ${v.company}`,
       '',
-      'I would like to book a free trial of BrokrSuite.',
+      'I would like to book a demo of BrokrSuite.',
     ].join('\n');
     return `mailto:${trialInbox}?subject=${encodeURIComponent(
-      `Free trial request — ${v.firstName} ${v.lastName}`,
+      `Demo request — ${v.firstName} ${v.lastName}`,
     )}&body=${encodeURIComponent(body)}`;
   }
 
@@ -56,7 +56,7 @@ export function FreeTrialForm() {
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
         access_key: web3formsKey,
-        subject: `Free trial request — ${values.firstName} ${values.lastName} (${values.company})`,
+        subject: `Demo request — ${values.firstName} ${values.lastName} (${values.company})`,
         from_name: 'BrokrSuite website',
         replyto: values.email,
         Name: `${values.firstName} ${values.lastName}`,
@@ -76,7 +76,7 @@ export function FreeTrialForm() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
-        _subject: `Free trial request — ${values.firstName} ${values.lastName} (${values.company})`,
+        _subject: `Demo request — ${values.firstName} ${values.lastName} (${values.company})`,
         _captcha: 'false',
         _template: 'table',
         Name: `${values.firstName} ${values.lastName}`,
@@ -141,7 +141,7 @@ export function FreeTrialForm() {
       <div className="rounded-card-lg border border-success/30 bg-success/5 p-6 sm:p-8">
         <h2 className="text-lg font-semibold text-ink-950">Thanks — we have your details</h2>
         <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink-600">
-          Someone from the team will be in touch shortly to set your trial up. If it is urgent, email us at{' '}
+          Someone from the team will be in touch shortly to arrange your demo. If it is urgent, email us at{' '}
           <a className="font-medium text-brand-700 underline underline-offset-4" href={`mailto:${trialInbox}`}>
             {trialInbox}
           </a>
@@ -195,11 +195,11 @@ export function FreeTrialForm() {
       )}
 
       <Button type="submit" size="lg" disabled={status.kind === 'sending'} className="w-full sm:w-auto">
-        {status.kind === 'sending' ? 'Sending…' : 'Book my free trial'}
+        {status.kind === 'sending' ? 'Sending…' : 'Book my demo'}
       </Button>
 
       <p className="text-xs leading-relaxed text-ink-400">
-        We use these details only to set up your trial and get in touch about it.
+        We use these details only to arrange your demo and get in touch about it.
       </p>
     </form>
   );

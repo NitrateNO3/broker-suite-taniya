@@ -4,12 +4,12 @@ import { pageMetadata } from '@/lib/seo';
 import { PageHeader } from '@/components/PageHeader';
 import { Icon } from '@/components/Icon';
 import { Container, Section } from '@/components/ui/Section';
-import { Button } from '@/components/ui/Button';
-import { contact, site } from '@/config/site';
+import { FAQ } from '@/components/sections/FAQ';
+import { contact, site, supportFaqs } from '@/config/site';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Help & Support',
-  description: `Contact the ${site.name} support team, or browse answers to the questions we are asked most.`,
+  description: `Contact ${site.name} support by email or in the app, and find answers on agents, saved properties, listing a property and deleting your account.`,
   path: '/help/',
 });
 
@@ -22,6 +22,7 @@ export default function HelpPage() {
         eyebrow="Help & Support"
         title="How can we help you?"
         body="Reach out to our customer support team or browse frequently asked questions below."
+        breadcrumbs={[{ name: 'Help & Support', path: '/help/' }]}
       />
 
       <Section compactTop>
@@ -66,20 +67,13 @@ export default function HelpPage() {
         </Container>
       </Section>
 
-      <Section compactTop>
-        <Container>
-          <div className="max-w-3xl rounded-card-lg border border-ink-200/70 bg-ink-50 p-6 sm:p-8">
-            <h2 className="text-base font-semibold text-ink-950">Frequently asked questions</h2>
-            <p className="mt-2 text-sm leading-relaxed text-ink-500">
-              The same answers you will find under Help &amp; Support in the app — how to reach an agent,
-              how saved properties work, how to list a property, and how to delete your account.
-            </p>
-            <Button href="/#faq" variant="secondary" className="mt-5">
-              Read the FAQ
-            </Button>
-          </div>
-        </Container>
-      </Section>
+      <FAQ
+        items={supportFaqs}
+        eyebrow="Using the app"
+        title="Frequently asked questions"
+        body="The same answers you will find under Help & Support in the app."
+        tone="muted"
+      />
     </>
   );
 }

@@ -25,7 +25,7 @@ forbids shipping unverified content. Each is a one-line change.
 
 | What | Where | Currently |
 |---|---|---|
-| Production domain | `config/site.ts` → `site.url` | `https://brokrsuite.com` — drives canonical URLs, OG tags and `sitemap.xml` |
+| Production domain | `config/site.ts` → `site.url` | `https://www.brokrsuite.in` — drives canonical URLs, OG tags and `sitemap.xml`. The apex `brokrsuite.in` must 308-redirect here (set in Vercel → Domains) |
 | App Store / Play links | `config/site.ts` → `stores` | `null` → badges render a non-clickable "Coming soon" chip |
 | Pricing | `config/site.ts` → `pricing` | `enabled: false` → plans show "Pricing on request" instead of numbers |
 | Statistics | `config/site.ts` → `stats` | `enabled: false` → the section does not render at all |
@@ -57,6 +57,21 @@ Per PRD §29 no tracking is installed — do not add it before the consent
 implementation is ready. The conversion elements are already tagged with
 `data-analytics` attributes so a provider can bind to them without edits:
 `get-started-click`, `demo-request`, `app-store-click`, `google-play-click`.
+
+---
+
+## SEO
+
+Landing pages, blog, schema and sitemap are documented in `docs/seo/`
+(`REPORT.md` first). Before deploying an SEO change, run:
+
+```bash
+npm run build && npx next start -p 3000 &
+python3 -I docs/seo/seo-check.py http://localhost:3000
+```
+
+Primary CTA is `demoCta` in `config/site.ts`; landing-page copy lives in
+`config/landing.ts`, blog posts in `config/blog.ts`.
 
 ---
 

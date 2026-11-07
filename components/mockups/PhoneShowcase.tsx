@@ -37,7 +37,7 @@ export function PhoneShowcase() {
           >
             <div className="overflow-hidden rounded-[1.6rem] bg-ink-950 p-1.5 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.75)] ring-1 ring-white/15">
               <div className="overflow-hidden rounded-[1.25rem]">
-                <AppShot screen="splash" priority sizes="(min-width: 1024px) 260px, 60vw" />
+                <AppShot screen="splash" priority sizes="(min-width: 1024px) 210px, (min-width: 640px) 180px, 155px" />
               </div>
             </div>
             {/* Edge highlight, so the device reads as glass rather than a flat rectangle */}

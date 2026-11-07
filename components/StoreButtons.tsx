@@ -67,7 +67,6 @@ function Badge({
       target="_blank"
       rel="noopener noreferrer"
       className={toneClasses(tone, true)}
-      aria-label={label}
       data-analytics={large === 'App Store' ? 'app-store-click' : 'google-play-click'}
     >
       {content}

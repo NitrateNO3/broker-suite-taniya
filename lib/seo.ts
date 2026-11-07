@@ -22,12 +22,14 @@ export function pageMetadata({
   ogTitle,
   ogDescription,
 }: {
-  title: string;
+  /** Pass `{ absolute }` to skip the " | BrokrSuite" template (the homepage). */
+  title: string | { absolute: string };
   description: string;
   path: string;
   ogTitle?: string;
   ogDescription?: string;
 }): Metadata {
+  const social = ogTitle ?? (typeof title === 'string' ? `${title} | ${site.name}` : title.absolute);
   return {
     title,
     description,
@@ -37,13 +39,13 @@ export function pageMetadata({
       siteName: site.name,
       locale: site.locale,
       url: path,
-      title: ogTitle ?? `${title} | ${site.name}`,
+      title: social,
       description: ogDescription ?? description,
       images: [ogImage],
     },
     twitter: {
       card: 'summary_large_image',
-      title: ogTitle ?? `${title} | ${site.name}`,
+      title: social,
       description: ogDescription ?? description,
       images: [ogImage.url],
     },

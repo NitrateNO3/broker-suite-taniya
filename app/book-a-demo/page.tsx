@@ -6,25 +6,25 @@ import { Container, Section } from '@/components/ui/Section';
 import { site } from '@/config/site';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Book Your Free Trial',
-  description: `Book a free trial of ${site.name} — the real estate CRM and property management platform for brokers, agents and agencies.`,
-  path: '/free-trial/',
+  title: 'Book a Demo',
+  description: `Book a demo of ${site.name}, the real estate CRM app for brokers, agents and agencies. See how it fits your business and get current pricing.`,
+  path: '/book-a-demo/',
 });
 
 const points = [
-  'A walkthrough of the platform with your own use case in mind',
-  'Help importing your properties, leads and team',
+  'A walkthrough of BrokrSuite with your own business in mind',
+  'Help setting up your properties, leads and team',
   'Answers on pricing and what your business would need',
 ];
 
-export default function FreeTrialPage() {
+export default function BookDemoPage() {
   return (
     <div className="flex min-h-[calc(100svh-4rem)] flex-col lg:min-h-[calc(100svh-4.5rem)]">
       <PageHeader
         compact
-        eyebrow="Free trial"
-        title="Book your free trial"
-        body={`Tell us a little about your business and we will set up ${site.name} for you.`}
+        eyebrow="Book a demo"
+        title="Book a demo of BrokrSuite"
+        body={`Tell us a little about your business and we will show you how ${site.name} fits it.`}
       />
 
       <Section compactTop className="flex flex-1 flex-col justify-center !pt-8 !pb-12 sm:!pt-10 sm:!pb-14">

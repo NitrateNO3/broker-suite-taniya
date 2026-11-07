@@ -6,8 +6,8 @@ export const dynamic = 'force-static';
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [{ userAgent: '*', allow: '/' }],
+    // The form endpoint is POST-only and has nothing to index.
+    rules: [{ userAgent: '*', allow: '/', disallow: '/api/' }],
     sitemap: `${site.url}/sitemap.xml`,
-    host: site.url,
   };
 }

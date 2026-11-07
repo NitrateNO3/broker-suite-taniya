@@ -1,22 +1,36 @@
+import { JsonLd } from '@/components/JsonLd';
 import { Container, Section, SectionHeading } from '@/components/ui/Section';
-import { faqs } from '@/config/site';
+import type { Faq } from '@/config/site';
+import { faqSchema } from '@/lib/schema';
 
 /**
  * Native <details> accordion — keyboard accessible and functional without
- * JavaScript, which keeps the FAQ readable to crawlers too.
+ * JavaScript, which keeps the FAQ readable to crawlers too. Emits FAQPage
+ * markup for exactly the questions shown, so a page should render one of these
+ * at most.
  */
-export function FAQ() {
+export function FAQ({
+  items,
+  eyebrow = 'FAQ',
+  title = 'Frequently asked questions',
+  body,
+  tone = 'default',
+  compactTop = false,
+}: {
+  items: readonly Faq[];
+  eyebrow?: string;
+  title?: string;
+  body?: string;
+  tone?: 'default' | 'muted';
+  compactTop?: boolean;
+}) {
   return (
-    <Section id="faq">
+    <Section id="faq" tone={tone} compactTop={compactTop}>
       <Container>
-        <SectionHeading
-          eyebrow="FAQ"
-          title="Frequently asked questions"
-          body="Everything brokers usually ask before getting started."
-        />
+        <SectionHeading eyebrow={eyebrow} title={title} body={body} />
 
         <div className="mx-auto mt-12 max-w-3xl divide-y divide-ink-200 border-y border-ink-200 lg:mt-14">
-          {faqs.map((faq) => (
+          {items.map((faq) => (
             <details key={faq.q} className="group">
               <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 [&::-webkit-details-marker]:hidden">
                 <h3 className="text-base font-semibold text-ink-950 sm:text-[1.0625rem]">{faq.q}</h3>
@@ -34,6 +48,7 @@ export function FAQ() {
           ))}
         </div>
       </Container>
+      <JsonLd data={faqSchema(items)} />
     </Section>
   );
 }

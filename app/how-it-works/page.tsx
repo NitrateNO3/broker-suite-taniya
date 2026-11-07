@@ -10,8 +10,8 @@ import { Reveal } from '@/components/ui/Reveal';
 import { site } from '@/config/site';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'How It Works',
-  description: `How ${site.name} works, screen by screen — from opening the app to browsing listings and working your day from the dashboard.`,
+  title: 'How the BrokrSuite App Works',
+  description: `How the ${site.name} real estate CRM app works, screen by screen — from signing in to browsing listings and running your day from the dashboard.`,
   path: '/how-it-works/',
 });
 
@@ -22,6 +22,7 @@ export default function HowItWorksPage() {
         eyebrow="How it works"
         title={`A walk through ${site.name}`}
         body="What the app actually looks like, screen by screen — every image below is a real screenshot, not a rendering."
+        breadcrumbs={[{ name: 'How It Works', path: '/how-it-works/' }]}
       />
 
       <HowItWorks compactTop />

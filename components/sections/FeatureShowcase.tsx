@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Icon } from '@/components/Icon';
 import { AppShot } from '@/components/mockups/AppShot';
 import { PhoneFrame } from '@/components/mockups/PhoneFrame';
@@ -26,6 +27,21 @@ function PointList({ points, className = '' }: { points: readonly string[]; clas
   );
 }
 
+function PageLink({ feature }: { feature: Feature }) {
+  if (!feature.page) return null;
+  return (
+    <Link
+      href={feature.page.href}
+      className="mt-6 inline-flex items-center gap-1.5 rounded text-sm font-semibold text-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+    >
+      {feature.page.label}
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5" aria-hidden="true">
+        <path d="M5 12h13M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </Link>
+  );
+}
+
 /** A feature that has a real screenshot: full-width, device alongside. */
 function FeatureRow({ feature, flip }: { feature: Feature; flip: boolean }) {
   return (
@@ -43,6 +59,7 @@ function FeatureRow({ feature, flip }: { feature: Feature; flip: boolean }) {
         <h3 className="mt-5 text-display-sm font-bold text-ink-950">{feature.title}</h3>
         <p className="mt-3 text-base leading-relaxed text-ink-500 sm:text-lg">{feature.summary}</p>
         <PointList points={feature.points} className="mt-7 sm:grid-cols-2" />
+        <PageLink feature={feature} />
       </div>
 
       {feature.screen && (
@@ -83,6 +100,9 @@ function FeatureBrief({ feature }: { feature: Feature }) {
       <h3 className="mt-4 text-xl font-bold text-ink-950 sm:text-2xl">{feature.title}</h3>
       <p className="mt-2.5 text-[0.9375rem] leading-relaxed text-ink-500">{feature.summary}</p>
       <PointList points={feature.points} className="mt-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2" />
+      <div className="mt-auto">
+        <PageLink feature={feature} />
+      </div>
     </div>
   );
 }

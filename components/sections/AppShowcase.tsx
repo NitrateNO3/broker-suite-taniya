@@ -22,7 +22,7 @@ export function AppShowcase() {
           <div className="mt-8">
             <p className="text-sm font-semibold text-white">Download {site.name}</p>
             <StoreButtons tone="dark" className="mt-3" />
-            <p className="mt-4 max-w-sm text-xs leading-relaxed text-ink-500">
+            <p className="mt-4 max-w-sm text-xs leading-relaxed text-ink-400">
               Available now on the App Store and Google Play.
             </p>
           </div>

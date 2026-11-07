@@ -52,4 +52,11 @@
   .legal-prose strong {
     @apply font-semibold text-ink-800;
   }
+  .legal-prose ol {
+    @apply mb-4 max-w-prose list-decimal space-y-2 pl-5 marker:font-semibold marker:text-ink-400;
+  }
+  /* Blog articles: the same typography at reading size. */
+  .article-prose {
+    @apply text-base sm:text-[1.0625rem];
+  }
 }

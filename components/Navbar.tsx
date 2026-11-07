@@ -7,6 +7,7 @@ import { Logo } from '@/components/Logo';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Section';
 import { mainNav, type NavItem } from '@/config/nav';
+import { demoCta } from '@/config/site';
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -158,8 +159,8 @@ export function Navbar() {
               <Button href="/#download" variant="secondary" size="sm" className="hidden xl:inline-flex">
                 Download App
               </Button>
-              <Button href="/free-trial/" size="sm" data-analytics="free-trial-click">
-                Book Your Free Trial
+              <Button href={demoCta.href} size="sm" data-analytics="demo-request">
+                {demoCta.label}
               </Button>
             </div>
 
@@ -231,8 +232,8 @@ export function Navbar() {
               ))}
             </ul>
             <div className="mt-6 flex flex-col gap-3 pb-8">
-              <Button href="/free-trial/" size="lg" className="w-full">
-                Book Your Free Trial
+              <Button href={demoCta.href} size="lg" className="w-full" data-analytics="demo-request">
+                {demoCta.label}
               </Button>
               <Button href="/#download" variant="secondary" size="lg" className="w-full">
                 Download App
